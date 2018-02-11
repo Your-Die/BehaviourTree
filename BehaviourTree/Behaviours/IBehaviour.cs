@@ -22,7 +22,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Updates the behavour.
         /// </summary>
         /// <returns>The status after the update.</returns>
-        Behaviour.Status Update();
+        Behaviour.Status Tick();
 
         /// <summary>
         /// Terminate the behavior.

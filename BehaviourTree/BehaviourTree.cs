@@ -54,7 +54,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             if (current == null)
                 return false;
 
-            current.Update();
+            current.Tick();
 
             if (!current.IsTerminated)
                 _activeBehaviours.AddLast(current);

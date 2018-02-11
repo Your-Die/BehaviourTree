@@ -64,7 +64,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Updates the behavour.
         /// </summary>
         /// <returns>The status after the update.</returns>
-        public Status Update()
+        public Status Tick()
         {
             //Initialize if we're not running.
             if(CurrentStatus != Status.Running) 
@@ -81,7 +81,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <summary>
-        /// Initializes the behavior. Called when <see cref="Update"/> is called on an inactive behavior.
+        /// Initializes the behavior. Called when <see cref="Tick"/> is called on an inactive behavior.
         /// </summary>
         protected virtual void Initialize()
         {

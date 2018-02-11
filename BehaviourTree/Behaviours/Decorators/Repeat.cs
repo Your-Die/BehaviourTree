@@ -33,7 +33,7 @@
             while (_currentCount < _count)
             {
                 //Run child.
-                Status childStatus = Child.Update();
+                Status childStatus = Child.Tick();
 
                 //If it's not a success, return the status.
                 if (childStatus != Status.Succes)
