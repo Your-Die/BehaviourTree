@@ -20,16 +20,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <returns></returns>
         protected override Status UpdateInternal()
         {
-            return Status.Running;
-        }
-
-        /// <summary>
-        /// Suspends the composite.
-        /// </summary>
-        public void Suspend()
-        {
-            Tree.SuspendBehaviour(this);
-            CurrentStatus = Status.Suspended;
+            return Status.Suspended;
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// The behaviours that are currently active.
         /// </summary>
         private readonly LinkedList<IBehaviour> _activeBehaviours = new LinkedList<IBehaviour>();
-
+        private readonly List<IBehaviour> _suspendedBehaviours = new List<IBehaviour>();
         /// <summary>
         /// The root behaviour in this tree.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public void Update()
         {
-            if (!_activeBehaviours.Any())
+            if (!_activeBehaviours.Any() && _suspendedBehaviours.Any())
                 _activeBehaviours.AddLast(Root);
 
             _activeBehaviours.AddLast((IBehaviour)null);
@@ -54,9 +54,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             if (current == null)
                 return false;
 
-            current.Tick();
+            Behaviour.Status status = current.Tick();
 
-            if (!current.IsTerminated)
+            if (!current.IsTerminated && status != Behaviour.Status.Suspended)
                 _activeBehaviours.AddLast(current);
 
             return true;
@@ -86,6 +86,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public void SuspendBehaviour(IBehaviour behaviour)
         {
             _activeBehaviours.Remove(behaviour);
+            _suspendedBehaviours.Add(behaviour);
+
+            behaviour.Terminated += OnSuspendedBehaviourTerminated;
+        }
+
+        private void OnSuspendedBehaviourTerminated(IBehaviour behaviour, Behaviour.Status status)
+        {
+            _suspendedBehaviours.Remove(behaviour);
+            behaviour.Terminated -= OnSuspendedBehaviourTerminated;
         }
     }
 }

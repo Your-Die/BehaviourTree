@@ -51,7 +51,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// If the behaviour is terminated or not.
         /// </summary>
-        public bool IsTerminated { get; private set; }
+        public bool IsTerminated { get; private set; } = true;
 
         public BehaviourTree Tree { get; set; }
 
@@ -67,8 +67,11 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public Status Tick()
         {
             //Initialize if we're not running.
-            if(CurrentStatus != Status.Running) 
+            if(IsTerminated) 
                 Initialize();
+
+            if (CurrentStatus == Status.Suspended)
+                return Status.Suspended;
 
             //Update.
             CurrentStatus = UpdateInternal();
@@ -111,6 +114,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         {
             CurrentStatus = status;
             Terminate();
+        }
+
+        /// <summary>
+        /// Suspends the <see cref="IBehaviour"/>.
+        /// </summary>
+        public void Suspend()
+        {
+            Tree.SuspendBehaviour(this);
+            CurrentStatus = Status.Suspended;
         }
     }
 }
