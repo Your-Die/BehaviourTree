@@ -9,6 +9,6 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 
         event Action<Transform> TargetChanged;
 
-        bool TryGetTarget(out Transform target);
+        Transform GetTarget();
     }
 }

@@ -31,18 +31,27 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
                 _movementController = GetComponentInParent<MovementController>();
 
             if (_findTargeterOnAwake)
-                _targeter = GetComponentInParent<ITargeter>();
-
-            if (_targeter == null)
-                return;
-
-            _targeter.TryGetTarget(out _target);
-            _targeter.TargetChanged += SetTarget;
+                _targeter = GetComponentInParent<ITargeter>(); 
         }
 
         private void SetTarget(Transform target)
         {
             Target = target;
+        }
+
+        protected override void OnInitialization()
+        {
+            if (_targeter == null)
+                return;
+
+            _target = _targeter.GetTarget();
+            _targeter.TargetChanged += SetTarget;
+        }
+
+        protected override void OnTemination()
+        {
+            MovementController.StopMovement();
+            _targeter.TargetChanged -= SetTarget;
         }
 
         protected virtual void OnDestroy()
