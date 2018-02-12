@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
@@ -8,7 +9,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         {
             //Lost target.
             if (Target == null)
-                return Behaviour.Status.Failure;
+                return Status.Failure;
 
             //Get positions.
             Vector3 currentPosition = transform.position;
@@ -20,13 +21,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             //Check if close enough.
             float distance = difference.magnitude;
             if (distance < DistanceThreshold)
-                return Behaviour.Status.Succes;
+                return Status.Succes;
 
             //Move towards target.
             Vector3 direction = difference.normalized;
             MovementController.ApplyMovement(direction);
             
-            return Behaviour.Status.Running;
+            return Status.Running;
         }
     }
 }
