@@ -64,6 +64,9 @@ namespace Chinchillada.BehaviourSelections.Utilities
         /// <returns>The grabbed element.</returns>
         public static T GrabFirst<T>(this LinkedList<T> list)
         {
+            if (!list.Any())
+                return default(T);
+
             T element = list.First.Value;
             list.RemoveFirst();
 
