@@ -47,15 +47,18 @@
 
             //Stop if child failed.
             if (childStatus == Status.Failure)
+            {
                 Terminate(Status.Failure);
-
+                return;
+            }
+            
             //Terminate if it was the last child.
             CurrentChildIndex++;
             if (CurrentChildIndex >= Children.Count)
                 Terminate(Status.Succes);
-
-            //Start next child.
-            StartCurrentChild();
+            else
+                //Start next child.
+                StartCurrentChild();
         }
     }
 }
