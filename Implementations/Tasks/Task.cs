@@ -10,6 +10,11 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// </summary>
     internal abstract class Task : MonoBehaviour, IBehaviourBuilder
     {
+        protected TaskBehaviour Behaviour { get; private set; }
+
+        protected virtual void OnInitialization() { }
+        protected virtual void OnTemination() { }
+
         /// <summary>
         /// Updates every frame while this <see cref="Task"/> is active.
         /// </summary>
@@ -19,19 +24,42 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         /// <inheritdoc />
         public IBehaviour Build(BehaviourTree tree)
         {
-            return new TaskBehaviour(UpdateInternal, tree);
+            Behaviour = new TaskBehaviour(UpdateInternal, OnInitialization, OnTemination, tree);
+            return Behaviour;
         }
 
         /// <summary>
         /// <see cref="Behaviour"/> that the <see cref="Task"/> wraps.
         /// </summary>
-        private class TaskBehaviour : Behaviour
+        protected class TaskBehaviour : Behaviour
         {
             private readonly Func<Status> _updateDelegate;
+            private readonly System.Action _onInitialize;
+            private readonly System.Action _onTerminate;
 
-            public TaskBehaviour(Func<Status> updateDelegate, BehaviourTree tree) : base(tree)
+            public Status Status
+            {
+                get { return CurrentStatus; }
+                set { CurrentStatus = value; }
+            }
+
+            public TaskBehaviour(Func<Status> updateDelegate, System.Action onInitialize, System.Action onTerminate, BehaviourTree tree) : base(tree)
             {
                 _updateDelegate = updateDelegate;
+                _onInitialize = onInitialize;
+                _onTerminate = onTerminate;
+            }
+
+            protected override void Initialize()
+            {
+                _onInitialize.Invoke();
+                base.Initialize();
+            }
+
+            public override void Terminate()
+            {
+                _onTerminate.Invoke();
+                base.Terminate();
             }
 
             protected override Status UpdateInternal()
