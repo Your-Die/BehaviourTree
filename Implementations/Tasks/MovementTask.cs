@@ -9,11 +9,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 
         [SerializeField] private float _distanceThreshold;
 
-        [SerializeField] private bool _findMovementOnAwake;
-        [SerializeField] private bool _findTargeterOnAwake;
-
-        [SerializeField] private MovementController _movementController;
-        [SerializeField] private ITargeter _targeter;
+        private MovementController _movementController;
+        private ITargeter _targeter;
 
         protected float DistanceThreshold => _distanceThreshold;
 
@@ -29,11 +26,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 
         protected virtual void Awake()
         {
-            if (_findMovementOnAwake)
-                _movementController = GetComponentInParent<MovementController>();
-
-            if (_findTargeterOnAwake)
-                _targeter = GetComponentInParent<ITargeter>(); 
+            _movementController = GetComponentInParent<MovementController>();
+            _targeter = GetComponentInParent<ITargeter>();
         }
 
         private void SetTarget(Transform target)
