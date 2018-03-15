@@ -17,6 +17,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 
         protected float DistanceThreshold => _distanceThreshold;
 
+        protected ITargeter Targeter => _targeter;
+
         protected MovementController MovementController => _movementController;
 
         public Transform Target

@@ -10,21 +10,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             //Lost target.
             if (Target == null)
                 return Status.Failure;
-
-            //Get positions.
-            Vector3 currentPosition = transform.position;
-            Vector3 targetPosition = Target.position;
-
-            //Calculate difference.
-            Vector3 difference = targetPosition - currentPosition;
-
-            //Check if close enough.
-            float distance = difference.magnitude;
+             
+            //Check if close enough. 
+            float distance = Targeter.DistanceToTarget();
             if (distance < DistanceThreshold)
                 return Status.Succes;
 
-            //Move towards target.
-            Vector3 direction = difference.normalized;
+            //Move towards target. 
+            Vector3 direction = Targeter.DirectionToTarget();
             MovementController.ApplyMovement(direction);
             
             return Status.Running;
