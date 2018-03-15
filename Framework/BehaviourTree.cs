@@ -67,7 +67,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public void StartBehaviour(IBehaviour behaviour)
         {
-            _activeBehaviours.AddFirst(behaviour);
+            _activeBehaviours.AddLast(behaviour);
         }
 
         /// <summary>
@@ -78,6 +78,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public void StopBehaviour(IBehaviour behaviour, Behaviour.Status status)
         {
             behaviour.Terminate(status);
+            _activeBehaviours.Remove(behaviour);
         }
 
         /// <summary>

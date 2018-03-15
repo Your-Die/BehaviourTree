@@ -16,6 +16,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         private readonly Policy _failurePolicy;
 
+        private LinkedList<IBehaviour> _activeChildren;
+
         /// <summary>
         /// The sucessful children up until now.
         /// </summary>
@@ -62,6 +64,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         {
             base.Initialize();
 
+            _activeChildren = new LinkedList<IBehaviour>(Children);
             _succesfulChildren.Clear();
             _failedChildren.Clear();
 
@@ -74,8 +77,18 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Suspend();
         }
 
+        public override void Terminate()
+        {
+            base.Terminate();
+
+            foreach (IBehaviour activeChild in _activeChildren)
+                Tree.StopBehaviour(activeChild, CurrentStatus);
+        }
+
         private void OnChildTerminated(IBehaviour child, Status status)
         {
+            _activeChildren.Remove(child);
+
             switch (status)
             {
                 case Status.Succes:
@@ -89,14 +102,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
                     if (ValidatePolicy(_failurePolicy, _failedChildren))
                         Terminate(Status.Failure);
 
-                    break;
-            }
+                    break; 
+            } 
         }
 
         /// <summary>
         /// Validates if the <paramref name="policy"/> is satisfied by the <paramref name="policySet"/>.
         /// </summary>
-        private bool ValidatePolicy(Policy policy, HashSet<IBehaviour> policySet)
+        private bool ValidatePolicy(Policy policy, ICollection<IBehaviour> policySet)
         {
             switch (policy)
             {
