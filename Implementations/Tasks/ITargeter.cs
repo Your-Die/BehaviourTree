@@ -5,10 +5,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
     internal interface ITargeter
     {
-        float DistanceToTarget();
-
         event Action<Transform> TargetChanged;
-
         Transform GetTarget();
-    }
+        float DistanceToTarget();
+        Vector3 DirectionToTarget();
+    } 
 }
