@@ -72,5 +72,13 @@ namespace Chinchillada.BehaviourSelections.Utilities
 
             return element;
         }
+
+        /// <summary>
+        /// Checks if the <param name="enumerable"> is empty.</param>
+        /// </summary> 
+        public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
+        {
+            return !enumerable.Any();
+        }
     }
 }
