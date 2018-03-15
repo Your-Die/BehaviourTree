@@ -31,7 +31,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public void Update()
         {
-            if (!_activeBehaviours.Any() && _suspendedBehaviours.Any())
+            if (_activeBehaviours.IsEmpty() && _suspendedBehaviours.IsEmpty())
                 _activeBehaviours.AddLast(Root);
 
             _activeBehaviours.AddLast((IBehaviour)null);
