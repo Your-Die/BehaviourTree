@@ -5,6 +5,11 @@
     /// </summary>
     public class Filter : Sequence, IConditionalComposite
     {
+        /// <summary>
+        /// The index of the newest added condition.
+        /// Used to insert new conditions, to preserve the order of added conditions but make them
+        /// appear before the actions.
+        /// </summary>
         private int _conditionIndex;
 
         public Filter(BehaviourTree tree) : base(tree) { }

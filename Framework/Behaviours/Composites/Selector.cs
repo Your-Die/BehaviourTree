@@ -1,20 +1,31 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
 {
     /// <summary>
-    /// A composite behaviour that tries running each if his child behaviours until one succeeds.
+    /// A composite behaviour that tries each of his child behaviours until one succeeds.
     /// </summary>
     public class Selector : Composite
-    {
-        public Selector(BehaviourTree tree) : base(tree) { }
-
+    { 
+        /// <summary>
+        /// Index of the currently active child.
+        /// </summary>
         protected int CurrentChildIndex { get; set; }
 
+        /// <summary>
+        /// Construct a new <see cref="Selector"/>.
+        /// </summary>
+        /// <param name="tree">The tree this <see cref="IBehaviour"/> is a part of.</param>
+        public Selector(BehaviourTree tree) : base(tree) { }
+
+        /// <inheritdoc />
         protected override void Initialize()
         {
             base.Initialize();
-            CurrentChildIndex = 0;
 
+            //Start first child.
+            CurrentChildIndex = 0;
             StartCurrentChild();
+
+            //Does nothing but wait for children to finish.
             Suspend();
         }
 

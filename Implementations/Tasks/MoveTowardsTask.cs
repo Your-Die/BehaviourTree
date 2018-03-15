@@ -3,9 +3,13 @@ using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
+    /// <summary>
+    /// Task that moves towards a given target.
+    /// </summary>
     internal class MoveTowardsTask : MovementTask
     {
-        protected override Behaviour.Status UpdateInternal()
+        /// <inheritdoc />
+        protected override Status UpdateInternal()
         {
             //Lost target.
             if (Target == null)

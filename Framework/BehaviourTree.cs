@@ -10,12 +10,19 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// The behaviours that are currently active.
         /// </summary>
         private readonly LinkedList<IBehaviour> _activeBehaviours = new LinkedList<IBehaviour>();
+
+        /// <summary>
+        /// The behaviours that have been suspended. These aren't updated, but the tree is still seen as active if this isn't empty.
+        /// </summary>
         private readonly List<IBehaviour> _suspendedBehaviours = new List<IBehaviour>();
         /// <summary>
         /// The root behaviour in this tree.
         /// </summary>
         public IBehaviour Root { get; set; }
 
+        /// <summary>
+        /// Construct a new empty <see cref="BehaviourTree"/>.
+        /// </summary>
         public BehaviourTree() { }
 
         /// <summary>
@@ -92,6 +99,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             behaviour.Terminated += OnSuspendedBehaviourTerminated;
         }
 
+        /// <summary>
+        /// Called when a suspended <see cref="IBehaviour"/> has terminated.
+        /// Removes it from <see cref="_suspendedBehaviours"/>.
+        /// </summary>
+        /// <param name="behaviour">The suspended behaviour that has been terminated.</param>
+        /// <param name="status">The status the <paramref name="behaviour"/> has terminated with.</param>
         private void OnSuspendedBehaviourTerminated(IBehaviour behaviour, Behaviour.Status status)
         {
             _suspendedBehaviours.Remove(behaviour);

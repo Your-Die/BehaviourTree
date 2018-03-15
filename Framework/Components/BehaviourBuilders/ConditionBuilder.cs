@@ -17,6 +17,11 @@ namespace Assets.BehaviourSelections.BahaviorTree.Builder
         /// <returns>True if the condition is valid.</returns>
         protected abstract bool ValidateCondition();
 
+        /// <summary>
+        /// Builds the <see cref="Condition"/>.
+        /// </summary>
+        /// <param name="tree">The tree the resulting <see cref="Condition"/> is to be a part of.</param>
+        /// <returns>The build <see cref="Condition"/>.</returns>
         public IBehaviour Build(BehaviourTree tree)
         {
             enabled = false;

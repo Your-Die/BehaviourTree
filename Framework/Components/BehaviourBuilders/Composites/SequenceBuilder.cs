@@ -5,6 +5,7 @@
     /// </summary>
     internal class SequenceBuilder : CompositeBuilder
     {
+        /// <inheritdoc />
         protected override Composite ConstructComposite(BehaviourTree tree)
         {
             return new Sequence(tree);

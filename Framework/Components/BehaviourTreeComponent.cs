@@ -23,6 +23,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
                 Build();
         }
 
+        /// <summary>
+        /// Updates the behaviour tree.
+        /// </summary>
         private void Update()
         {
             if(IsBuild) _behaviourTree.Update();

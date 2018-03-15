@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
 {
     /// <summary>
-    /// Abstract base class for composite-behaviour builders.
+    /// Abstract base class for <see cref="IBehaviourBuilder"/> that build <see cref="Composite"/> behaviours.
     /// </summary>
     internal abstract class CompositeBuilder : MonoBehaviour, IBehaviourBuilder
     {

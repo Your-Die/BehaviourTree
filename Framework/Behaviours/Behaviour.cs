@@ -53,8 +53,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public bool IsTerminated { get; private set; } = true;
 
+        /// <summary>
+        /// The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> is a part of.
+        /// </summary>
         public BehaviourTree Tree { get; set; }
 
+        /// <summary>
+        /// Construct a new <see cref="Behaviour"/>.
+        /// </summary>
+        /// <param name="tree">The tree this <see cref="IBehaviour"/> is a part of.</param>
         protected Behaviour(BehaviourTree tree)
         {
             Tree = tree;

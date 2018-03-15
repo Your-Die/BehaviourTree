@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Chinchillada.BehaviourSelections.Utilities
 {
+    /// <summary>
+    /// Static class containing extension methods for lists, enumerables and collections.
+    /// </summary>
     internal static class ListExtensions
     {
         /// <summary>

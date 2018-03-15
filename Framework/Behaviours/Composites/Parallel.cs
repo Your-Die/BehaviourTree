@@ -4,17 +4,21 @@ using System.Linq;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree
 {
+    /// <summary>
+    /// A <see cref="Composite"/> behaviour that updates every non-terminated child behaviour every frame, 
+    /// until either the <see cref="SuccessPolicy"/> or the <see cref="FailurePolicy"/> is reached.
+    /// </summary>
     public class Parallel : Composite
     {
         /// <summary>
         /// The policy for what counts as a success.
         /// </summary>
-        private readonly Policy _successPolicy;
+        public Policy SuccessPolicy { get; }
 
         /// <summary>
         /// The policy for what counts as a failure.
         /// </summary>
-        private readonly Policy _failurePolicy;
+        public Policy FailurePolicy { get; }
 
         private LinkedList<IBehaviour> _activeChildren;
 
@@ -56,50 +60,63 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             if (successPolicy == Policy.RequireAll && successPolicy == failurePolicy)
                 throw new ArgumentException("Success and failure policies can't both be require-all, will never terminate.");
 
-            _successPolicy = successPolicy;
-            _failurePolicy = failurePolicy;
+            SuccessPolicy = successPolicy;
+            FailurePolicy = failurePolicy;
         }
 
+        /// <inheritdoc />
         protected override void Initialize()
         {
             base.Initialize();
 
+            // Initialize the collections of children.
             _activeChildren = new LinkedList<IBehaviour>(Children);
             _succesfulChildren.Clear();
             _failedChildren.Clear();
 
+            //Start each child behaviour.
             foreach (IBehaviour child in Children)
             {
                 child.Terminated += OnChildTerminated;
                 Tree.StartBehaviour(child);
             }
 
+            //Suspend.
             Suspend();
         }
 
+        /// <inheritdoc />
         public override void Terminate()
         {
             base.Terminate();
 
+            //Stop any remaining active behaviours.
             foreach (IBehaviour activeChild in _activeChildren)
                 Tree.StopBehaviour(activeChild, CurrentStatus);
         }
 
+        /// <summary>
+        /// Called when the <paramref name="child"/> has terminated.
+        /// </summary>
+        /// <param name="child">The child that has terminated.</param>
+        /// <param name="status">The status the <paramref name="child"/> termianted with.</param>
         private void OnChildTerminated(IBehaviour child, Status status)
         {
+            //Remove from active list.
             _activeChildren.Remove(child);
 
+            //Check if either policy is reached.
             switch (status)
             {
                 case Status.Succes:
                     _succesfulChildren.Add(child);
-                    if (ValidatePolicy(_successPolicy, _succesfulChildren))
+                    if (ValidatePolicy(SuccessPolicy, _succesfulChildren))
                         Terminate(Status.Succes);
 
                     break;
                 case Status.Failure:
                     _failedChildren.Add(child);
-                    if (ValidatePolicy(_failurePolicy, _failedChildren))
+                    if (ValidatePolicy(FailurePolicy, _failedChildren))
                         Terminate(Status.Failure);
 
                     break; 

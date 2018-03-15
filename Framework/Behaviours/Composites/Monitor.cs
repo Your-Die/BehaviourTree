@@ -1,12 +1,23 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
 {
     /// <summary>
-    /// A parralel composite behaviour that monitors conditions in parralel to the actions being performed each update.
+    /// A <see cref="Parallel"/> composite behaviour that monitors conditions in parralel to the actions being performed each update.
     /// </summary>
     public class Monitor : Parallel, IConditionalComposite
     {
+        /// <summary>
+        /// The index of the newest added condition.
+        /// Used to insert new conditions, to preserve the order of added conditions but make them
+        /// appear before the actions.
+        /// </summary>
         private int _conditionIndex;
 
+        /// <summary>
+        /// Construct a new Monitor composite behaviour.
+        /// </summary>
+        /// <param name="tree">The tree this should be a node of.</param>
+        /// <param name="successPolicy">The policy for determining succes.</param>
+        /// <param name="failurePolicy">The policy for determining failure.</param>
         public Monitor(BehaviourTree tree, Policy successPolicy, Policy failurePolicy = Policy.RequireOne) 
             : base(tree, successPolicy, failurePolicy) { }
         

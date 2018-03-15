@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Chinchillada.BehaviourSelections.Utilities
 {
+    /// <summary>
+    /// Static class containing extension methods for <see cref="Transform"/>.
+    /// </summary>
     internal static class TransformExtensions
     {
         public static IEnumerable<T> GetComponentsInDirectChildren<T>(this Transform transform)

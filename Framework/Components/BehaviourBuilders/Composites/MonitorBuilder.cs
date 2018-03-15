@@ -17,6 +17,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// </summary>
         [SerializeField] private Parallel.Policy _failurePolicy = Parallel.Policy.RequireOne;
 
+        /// <inheritdoc />
         protected override Composite ConstructComposite(BehaviourTree tree)
         {
             return new Monitor(tree, _succesPolicy, _failurePolicy);
