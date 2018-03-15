@@ -7,7 +7,7 @@ namespace Assets.BehaviourSelections.BahaviorTree.Builder
     /// <summary>
     /// Base class for <see cref="IBehaviourBuilder"/> implementations that build <see cref="Condition"/>.
     /// </summary>
-    internal abstract class ConditionBuilder : MonoBehaviour, IBehaviourBuilder
+    public abstract class ConditionBuilder : MonoBehaviour, IBehaviourBuilder
     {
         [SerializeField] private Condition.Mode _mode = Condition.Mode.CheckOnce;
 
