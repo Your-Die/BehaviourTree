@@ -31,6 +31,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
             if(IsBuild) _behaviourTree.Update();
         }
 
+        /// <summary>
+        /// Builds a <see cref="BehaviourTree"/> with the tree of child <see cref="IBehaviourBuilder"/>s.
+        /// </summary>
         [ContextMenu("Build Tree")]
         public void Build()
         {
