@@ -24,7 +24,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         /// <inheritdoc />
         protected override Status UpdateInternal()
         {
-            return Behaviour.Status;
+            return Behaviour.Taskstatus;
         }
 
         /// <summary>

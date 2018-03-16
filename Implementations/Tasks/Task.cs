@@ -61,7 +61,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             /// <summary>
             /// The current status.
             /// </summary>
-            public Status Status
+            public Status Taskstatus
             {
                 get { return CurrentStatus; }
                 set { CurrentStatus = value; }
