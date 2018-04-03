@@ -91,8 +91,11 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             base.Terminate();
 
             //Stop any remaining active behaviours.
-            foreach (IBehaviour activeChild in _activeChildren)
-                Tree.StopBehaviour(activeChild, CurrentStatus);
+            foreach (IBehaviour child in _activeChildren)
+            {
+                child.Terminated -= OnChildTerminated;
+                Tree.StopBehaviour(child, CurrentStatus);
+            }
         }
 
         /// <summary>
@@ -103,6 +106,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         private void OnChildTerminated(IBehaviour child, Status status)
         {
             //Remove from active list.
+            child.Terminated -= OnChildTerminated;
             _activeChildren.Remove(child);
 
             //Check if either policy is reached.
