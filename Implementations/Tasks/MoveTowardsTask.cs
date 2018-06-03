@@ -14,7 +14,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         protected override Status UpdateInternal()
         {
             //Lost target.
-            if (Target == null)
+            if (!Targeter.HasTarget())
                 return Status.Failure;
              
             //Check if close enough. 
