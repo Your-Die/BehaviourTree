@@ -50,14 +50,20 @@
             //Unsubscribe.
             currentChild.Terminated -= OnCurrentChildTerminated;
 
-            //Stop if child failed.
+            //Stop if the child failed.
             if (childStatus == Status.Succes)
+            {
                 Terminate(Status.Succes);
+                return;
+            }
 
-            //Terminate if it was the last child.
+            //Stop if it was the last child.
             CurrentChildIndex++;
             if (CurrentChildIndex >= Children.Count)
+            {
                 Terminate(Status.Failure);
+                return;
+            }
 
             //Start next child.
             StartCurrentChild();
