@@ -1,4 +1,5 @@
-﻿using Chinchillada.Movement;
+﻿using Chinchillada.BehaviourSelections.Utilities;
+using Chinchillada.Movement;
 using UnityEngine;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
@@ -9,56 +10,27 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     internal abstract class MovementTask : Task
     {
         /// <summary>
-        /// The target to which we move relatively.
+        /// Keeps track of the target.
         /// </summary>
-        [SerializeField] private Transform _target;
-
-        /// <summary>
-        /// The threshhold of distance to the <see cref="_target"/>.
-        /// </summary>
-        [SerializeField] private float _distanceThreshold;
+        protected ITargeter Targeter { get; private set; }
 
         /// <summary>
         /// Handles the actual movement.
         /// </summary>
-        private MovementController _movementController;
-
-        /// <summary>
-        /// Keeps track of the target.
-        /// </summary>
-        private ITargeter _targeter;
-
-        /// <summary>
-        /// The threshhold of distance to the <see cref="_target"/>.
-        /// </summary>
-        protected float DistanceThreshold => _distanceThreshold;
-
-        /// <summary>
-        /// Keeps track of the target.
-        /// </summary>
-        protected ITargeter Targeter => _targeter;
-
-        /// <summary>
-        /// Handles the actual movement.
-        /// </summary>
-        protected MovementController MovementController => _movementController;
+        protected MovementController MovementController { get; private set; }
 
         /// <summary>
         /// The target to which we move relatively.
         /// </summary>
-        public Transform Target
-        {
-            get { return _target; }
-            set { _target = value; }
-        }
+        [SerializeField] public Transform Target { get; set; }
 
         /// <summary>
         /// Get necessary components.
         /// </summary>
         protected virtual void Awake()
         {
-            _movementController = GetComponentInParent<MovementController>();
-            _targeter = GetComponentInParent<ITargeter>();
+            MovementController = GetComponentInParent<MovementController>();
+            Targeter = GetComponentInParent<ITargeter>();
         }
         
         /// <summary>
@@ -73,12 +45,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         protected override void OnInitialization()
         {
             //We meed a targeter.
-            if (_targeter == null)
+            if (Targeter == null)
                 return;
 
             //Get the target.
-            _target = _targeter.GetTarget();
-            _targeter.TargetChanged += SetTarget;
+            Target = Targeter.GetTarget();
+            Targeter.TargetChanged += SetTarget;
         }
 
         /// <inheritdoc />
@@ -86,13 +58,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         {
             //Stop moving.
             MovementController.StopMovement();
-            _targeter.TargetChanged -= SetTarget;
+            Targeter.TargetChanged -= SetTarget;
         }
 
         protected virtual void OnDestroy()
         {
             //Ensure no lingering events are triggered.
-            _targeter.TargetChanged -= SetTarget;
+            Targeter.TargetChanged -= SetTarget;
         }
     }
 }

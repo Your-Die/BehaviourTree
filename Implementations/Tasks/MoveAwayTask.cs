@@ -8,12 +8,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// </summary>
     internal class MoveAwayTask : MovementTask
     {
+        [SerializeField] private float _farEnoughDistance = 5;
+
         /// <inheritdoc />
         protected override Status UpdateInternal()
-        {
+        { 
             //Check if we're far enough.
             float distance = Targeter.DistanceToTarget();
-            if (distance > DistanceThreshold)
+            
+            if (distance > _farEnoughDistance)
                 return Status.Succes;
 
             //Move away.
