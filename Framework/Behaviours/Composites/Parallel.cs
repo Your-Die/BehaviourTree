@@ -75,8 +75,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             _failedChildren.Clear();
 
             //Start each child behaviour.
-            foreach (IBehaviour child in Children)
+            for (int index = Children.Count - 1; index >= 0; index--)
             {
+                IBehaviour child = Children[index];
                 child.Terminated += OnChildTerminated;
                 Tree.StartBehaviour(child);
             }
