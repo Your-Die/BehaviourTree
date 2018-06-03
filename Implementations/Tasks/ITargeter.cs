@@ -20,6 +20,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         Transform GetTarget();
 
         /// <summary>
+        /// Checks if we currently have a target.
+        /// </summary>
+        /// <returns></returns>
+        bool HasTarget();
+
+        /// <summary>
         /// Get the current distance to the target.
         /// </summary> 
         float DistanceToTarget();
