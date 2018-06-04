@@ -42,7 +42,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Event called when the behaviour terminates.
         /// </summary>
         public event Action<IBehaviour, Status> Terminated;
-        
+
         /// <summary>
         /// The current status.
         /// </summary>
@@ -74,7 +74,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public Status Tick()
         {
             //Initialize if we're not running.
-            if(IsTerminated) 
+            if (IsTerminated)
                 Initialize();
 
             if (CurrentStatus == Status.Suspended)
@@ -82,9 +82,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
 
             //Update.
             CurrentStatus = UpdateInternal();
-            
+
             //Terminate if we're not running anymore.
-            if(CurrentStatus != Status.Running)
+            if (CurrentStatus != Status.Running)
                 Terminate();
 
             return CurrentStatus;
@@ -95,9 +95,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         protected virtual void Initialize()
         {
-            IsTerminated = false; 
+            IsTerminated = false;
         }
-        
+
         /// <summary>
         /// The actual updating of the behavior is delegated to subclasses.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public virtual void Terminate()
         {
-            IsTerminated = true; 
+            IsTerminated = true;
             Terminated?.Invoke(this, CurrentStatus);
         }
 
@@ -130,6 +130,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         {
             Tree.SuspendBehaviour(this);
             CurrentStatus = Status.Suspended;
+        }
+
+        public void Continue()
+        {
+            if (CurrentStatus == Status.Suspended)
+                Tree.ContinueBehaviour(this);
         }
     }
 }

@@ -99,6 +99,16 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             behaviour.Terminated += OnSuspendedBehaviourTerminated;
         }
 
+        public void ContinueBehaviour(IBehaviour suspendedBehaviour)
+        {
+            if (!_suspendedBehaviours.Remove(suspendedBehaviour))
+                return;
+
+            _activeBehaviours.AddLast(suspendedBehaviour);
+
+            suspendedBehaviour.Terminated -= OnSuspendedBehaviourTerminated;
+        }
+
         /// <summary>
         /// Called when a suspended <see cref="IBehaviour"/> has terminated.
         /// Removes it from <see cref="_suspendedBehaviours"/>.
