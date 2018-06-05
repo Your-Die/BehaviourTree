@@ -123,6 +123,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Terminate();
         }
 
+        public void StartBehaviour()
+        {
+            if (CurrentStatus != Status.Running && CurrentStatus != Status.Suspended)
+                Tree.StartBehaviour(this);
+        }
+        
         /// <summary>
         /// Suspends the <see cref="IBehaviour"/>.
         /// </summary>
