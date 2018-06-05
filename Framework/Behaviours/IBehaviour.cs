@@ -41,9 +41,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <param name="status">The status to terminate with.</param>
         void Terminate(Behaviour.Status status);
 
+        void StartBehaviour();
+
         /// <summary>
-        /// Suspends this behaviour, stopping it from being updated until further notice.
+        /// Suspends the <see cref="IBehaviour"/>.
         /// </summary>
         void Suspend();
+
+        void Continue();
     }
 }
