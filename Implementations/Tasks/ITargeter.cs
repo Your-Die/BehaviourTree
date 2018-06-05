@@ -6,7 +6,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// <summary>
     /// Interface for components that handle finding and keeping track of any potential targets.
     /// </summary>
-    internal interface ITargeter
+    public interface ITargeter
     {
         /// <summary>
         /// Event invoked when the active target has changed.

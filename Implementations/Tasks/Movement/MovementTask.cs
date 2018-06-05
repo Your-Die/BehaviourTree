@@ -6,7 +6,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// <summary>
     /// Base class for tasks that handle moving.
     /// </summary>
-    internal abstract class MovementTask : Task
+    public abstract class MovementTask : Task
     {
         /// <summary>
         /// Keeps track of the target.

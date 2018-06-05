@@ -8,7 +8,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// <summary>
     /// Base class for defining <see cref="BehaviourTree"/> behaviours as <see cref="MonoBehaviour"/>.
     /// </summary>
-    internal abstract class Task : MonoBehaviour, IBehaviourBuilder
+    public abstract class Task : MonoBehaviour, IBehaviourBuilder
     {
         /// <summary>
         /// The behaviour.
