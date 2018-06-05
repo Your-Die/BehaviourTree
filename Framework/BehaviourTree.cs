@@ -105,7 +105,6 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
                 return;
 
             _activeBehaviours.AddLast(suspendedBehaviour);
-
             suspendedBehaviour.Terminated -= OnSuspendedBehaviourTerminated;
         }
 
