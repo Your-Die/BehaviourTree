@@ -4,7 +4,7 @@
     /// A composite behaviour that tries each of his child behaviours until one succeeds.
     /// </summary>
     public class Selector : Composite
-    { 
+    {
         /// <summary>
         /// Index of the currently active child.
         /// </summary>
@@ -39,7 +39,7 @@
             currentChild.Terminated += OnCurrentChildTerminated;
 
             //Start.
-            Tree.StartBehaviour(currentChild);
+            currentChild.StartBehaviour();
         }
 
         /// <summary>
@@ -59,14 +59,10 @@
 
             //Stop if it was the last child.
             CurrentChildIndex++;
-            if (CurrentChildIndex >= Children.Count)
-            {
+            if (CurrentChildIndex < Children.Count)
+                StartCurrentChild();
+            else
                 Terminate(Status.Failure);
-                return;
-            }
-
-            //Start next child.
-            StartCurrentChild();
         }
     }
 }

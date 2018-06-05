@@ -38,7 +38,7 @@
             currentChild.Terminated += OnCurrentChildTerminated;
 
             //Start.
-            Tree.StartBehaviour(currentChild);
+            currentChild.StartBehaviour(); 
         }
 
         /// <summary>

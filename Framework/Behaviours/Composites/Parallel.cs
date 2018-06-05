@@ -79,7 +79,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             {
                 IBehaviour child = Children[index];
                 child.Terminated += OnChildTerminated;
-                Tree.StartBehaviour(child);
+                child.StartBehaviour();
             }
 
             //Suspend.
