@@ -8,7 +8,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
     /// <summary>
     /// Abstract base class for <see cref="IBehaviourBuilder"/> that build <see cref="Composite"/> behaviours.
     /// </summary>
-    internal abstract class CompositeBuilder : MonoBehaviour, IBehaviourBuilder
+    public abstract class CompositeBuilder : MonoBehaviour, IBehaviourBuilder
     {
         /// <inheritdoc />
         public IBehaviour Build(BehaviourTree tree)
