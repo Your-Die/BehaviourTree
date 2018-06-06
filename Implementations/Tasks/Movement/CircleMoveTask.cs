@@ -7,6 +7,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     {
         private float _angle;
 
+        protected override void OnInitialization()
+        {
+            base.OnInitialization();
+            
+            _angle = Vector2.Angle(Target.position, transform.position);
+        }
+
         protected override Status UpdateInternal()
         {
             //Ensure target.
