@@ -45,7 +45,7 @@
         /// <summary>
         /// Called when the current child is terminated.
         /// </summary>
-        private void OnCurrentChildTerminated(IBehaviour currentChild, Status childStatus)
+        protected void OnCurrentChildTerminated(IBehaviour currentChild, Status childStatus)
         {
             //Unsubscribe.
             currentChild.Terminated -= OnCurrentChildTerminated;
