@@ -3,7 +3,7 @@
     /// <summary>
     /// A decorator behaviour that repeats its child behaviour a specified amount of times.
     /// </summary>
-    public class Repeat : Decorator
+    public class Repeater : Decorator
     {
         /// <summary>
         /// The amount of times to repeat the <see cref="Decorator.Child"/>.
@@ -21,7 +21,7 @@
         /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> belongs to.</param>
         /// <param name="child">The child behaviour we want to repeat.</param>
         /// <param name="count">The amount of times we want to repeat the <paramref name="child"/>.</param>
-        public Repeat(BehaviourTree tree, IBehaviour child, int count) : base(tree, child)
+        public Repeater(BehaviourTree tree, IBehaviour child, int count) : base(tree, child)
         {
             _count = count;
         }
