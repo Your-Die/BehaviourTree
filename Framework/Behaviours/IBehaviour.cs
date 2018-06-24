@@ -18,7 +18,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// The current status.
         /// </summary>
         Behaviour.Status CurrentStatus { get; }
-
+        
         /// <summary>
         /// If the behaviour is terminated or not.
         /// </summary>
@@ -48,6 +48,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         void Suspend();
 
+        /// <summary>
+        /// Continues this <see cref="IBehaviour"/> if its <see cref="CurrentStatus"/> is <see cref="Behaviour.Status.Suspended"/>.
+        /// </summary>
         void Continue();
     }
 }
