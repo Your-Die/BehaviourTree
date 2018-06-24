@@ -7,7 +7,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// Interface for components that handle finding and keeping track of any potential targets.
     /// </summary>
     public interface ITargeter
-    {
+    { 
+        /// <summary>
+        /// Checks if we currently have a target.
+        /// </summary>
+        /// <returns></returns>
+        bool HasTarget { get; }
+
         /// <summary>
         /// Event invoked when the active target has changed.
         /// </summary>
@@ -18,13 +24,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         /// If no valid targets are found, will return null.
         /// </summary>
         Transform GetTarget();
-
-        /// <summary>
-        /// Checks if we currently have a target.
-        /// </summary>
-        /// <returns></returns>
-        bool HasTarget();
-
+        
         /// <summary>
         /// Get the current distance to the target.
         /// </summary> 
