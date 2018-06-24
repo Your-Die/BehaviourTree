@@ -33,9 +33,11 @@ internal class DistanceCondition : ConditionBuilder
     /// <inheritdoc />
     protected override bool ValidateCondition()
     {
-        //Get the distance to the targeter.
-        Transform target = _targeter.GetTarget();
-        float distance = Vector3.Distance(transform.position, target.position);
+        if (!_targeter.HasTarget)
+            return false;
+
+        //Get the distance to the target.
+        float distance = _targeter.DistanceToTarget();
 
         //Check if the distance is in range.
         return distance >= _minDistance  && distance <= _maxDistance;

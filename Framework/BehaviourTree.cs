@@ -61,9 +61,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             if (current == null)
                 return false;
 
-            Behaviour.Status status = current.Tick();
+            current.Tick();
 
-            if (!current.IsTerminated && status != Behaviour.Status.Suspended)
+            if (!current.IsTerminated)
                 _activeBehaviours.AddLast(current);
 
             return true;

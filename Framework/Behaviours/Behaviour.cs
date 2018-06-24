@@ -47,7 +47,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// The current status.
         /// </summary>
         public Status CurrentStatus { get; protected set; } = Status.Invalid;
-
+        
         /// <summary>
         /// If the behaviour is terminated or not.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <returns></returns>
         protected virtual Status UpdateInternal()
         {
-            return Status.Running;
+            return CurrentStatus;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
 
         public void StartBehaviour()
         {
-            if (CurrentStatus != Status.Running && CurrentStatus != Status.Suspended)
+            if (IsTerminated)
                 Tree.StartBehaviour(this);
         }
         
@@ -138,6 +138,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             CurrentStatus = Status.Suspended;
         }
 
+        /// <inheritdoc />
         public void Continue()
         {
             if (CurrentStatus == Status.Suspended)
