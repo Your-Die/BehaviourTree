@@ -47,7 +47,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// The current status.
         /// </summary>
         public Status CurrentStatus { get; protected set; } = Status.Invalid;
-        
+       
         /// <summary>
         /// If the behaviour is terminated or not.
         /// </summary>
