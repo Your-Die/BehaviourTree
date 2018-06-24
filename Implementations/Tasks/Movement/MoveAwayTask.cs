@@ -8,7 +8,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     /// </summary>
     internal class MoveAwayTask : MovementTask
     {
-        [SerializeField] private float _farEnoughDistance = 5;
+        [SerializeField] private float _farEnoughDistance = 3;
 
         /// <inheritdoc />
         protected override Status UpdateInternal()
