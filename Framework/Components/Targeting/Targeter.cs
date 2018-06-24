@@ -53,7 +53,7 @@ public class Targeter : MonoBehaviour, ITargeter
 
     public Vector3 DirectionToTarget()
     {
-        Vector3 difference = transform.position - _target.position;
-        return difference.normalized;
+        Vector3 difference = _target.position - transform.position;
+            return difference.normalized;
     }
 }
