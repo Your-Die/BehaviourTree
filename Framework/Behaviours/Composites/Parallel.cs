@@ -89,14 +89,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <inheritdoc />
         public override void Terminate()
         {
-            base.Terminate();
-
             //Stop any remaining active behaviours.
             foreach (IBehaviour child in _activeChildren)
             {
                 child.Terminated -= OnChildTerminated;
                 Tree.StopBehaviour(child, CurrentStatus);
             }
+
+            base.Terminate();
         }
 
         /// <summary>
