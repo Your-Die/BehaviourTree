@@ -10,9 +10,7 @@
         /// </summary>
         private int _previousChildIndex;
 
-        public ActiveSelector(BehaviourTree tree) : base(tree)
-        {
-        }
+        public ActiveSelector(BehaviourTree tree) : base(tree) { }
 
         protected override void Initialize()
         {
@@ -32,13 +30,14 @@
         protected override Status UpdateInternal()
         {
             //Check if we reached the previously active child. If not, cancel it.
-            if(CurrentChildIndex < _previousChildIndex)
+            if (CurrentChildIndex < _previousChildIndex)
                 Children[_previousChildIndex].Terminate(Status.Failure);
 
-            //Save currently active child, and evaluate.
+            //Save currently active child.
             _previousChildIndex = CurrentChildIndex;
-            Start();
+            Children[_previousChildIndex].Terminated -= OnCurrentChildTerminated;
 
+            Start();
             return Status.Running;
         }
     }
