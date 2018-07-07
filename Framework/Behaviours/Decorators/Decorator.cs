@@ -15,6 +15,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Construct a new Decorator Behaviour.
         /// </summary>
+        /// <param name="tree">The behaviour tree this node is a part of.</param>
         /// <param name="child"><see cref="Child"/>.</param>
         protected Decorator(BehaviourTree tree, IBehaviour child) : base(tree)
         {

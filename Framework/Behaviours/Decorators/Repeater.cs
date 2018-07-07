@@ -27,23 +27,50 @@
         }
 
         /// <inheritdoc />
-        protected override Status UpdateInternal()
+        protected override void Initialize()
         {
-            //Repeat for the given amount of times.
-            while (_currentCount < _count)
+            base.Initialize();
+
+            //Reset counter.
+            _currentCount = 0;
+
+            //Start child.
+            Child.Terminated += OnChildTerminated;
+            Child.StartBehaviour();
+        }
+
+        /// <inheritdoc />
+        public override void Terminate()
+        {
+            //Unsubscribe from child.
+            Child.Terminated -= OnChildTerminated;
+
+            //Ensure child is also terminated.
+            if(!Child.IsTerminated)
+                Child.Terminate(CurrentStatus);
+
+            base.Terminate();
+        }
+
+        /// <summary>
+        /// Called when the <paramref name="child"/> is terminated.
+        /// </summary>
+        /// <param name="child">The child.</param>
+        /// <param name="status">The status that the <paramref name="child"/> terminated with.</param>
+        private void OnChildTerminated(IBehaviour child, Status status)
+        {
+            //Increment and check if we repeated enough.
+            _currentCount++;
+            if (_currentCount >= _count)
             {
-                //Run child.
-                Status childStatus = Child.Tick();
-
-                //If it's not a success, return the status.
-                if (childStatus != Status.Succes)
-                    return childStatus;
-
-                //If it's a succes, increment the counter.
-                _currentCount++;
+                Terminate(Status.Succes);
+                return;
             }
 
-            return Status.Succes;
+            //Repeat.
+            Child.StartBehaviour();
         }
+
+
     }
 }
