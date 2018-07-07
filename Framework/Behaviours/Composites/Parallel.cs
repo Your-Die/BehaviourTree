@@ -20,6 +20,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         public Policy FailurePolicy { get; }
 
+        /// <summary>
+        /// The child nodes that are currently active.
+        /// </summary>
         private LinkedList<IBehaviour> _activeChildren;
 
         /// <summary>

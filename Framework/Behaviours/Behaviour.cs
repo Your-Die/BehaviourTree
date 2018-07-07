@@ -38,26 +38,18 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Suspended
         }
 
-        /// <summary>
-        /// Event called when the behaviour terminates.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IBehaviour, Status> Terminated;
 
-        /// <summary>
-        /// The current status.
-        /// </summary>
-        public Status CurrentStatus { get; protected set; } = Status.Invalid;
-       
-        /// <summary>
-        /// If the behaviour is terminated or not.
-        /// </summary>
-        public bool IsTerminated { get; private set; } = true;
-
-        /// <summary>
-        /// The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> is a part of.
-        /// </summary>
+        /// <inheritdoc />
         public BehaviourTree Tree { get; set; }
 
+        /// <inheritdoc />
+        public Status CurrentStatus { get; protected set; } = Status.Invalid;
+
+        /// <inheritdoc />
+        public bool IsTerminated { get; private set; } = true;
+        
         /// <summary>
         /// Construct a new <see cref="Behaviour"/>.
         /// </summary>
@@ -67,10 +59,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Tree = tree;
         }
 
-        /// <summary>
-        /// Updates the behavour.
-        /// </summary>
-        /// <returns>The status after the update.</returns>
+        /// <inheritdoc />
         public Status Tick()
         {
             //Initialize if we're not running.
@@ -99,17 +88,16 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <summary>
-        /// The actual updating of the behavior is delegated to subclasses.
+        /// Virtual sandbox method where imlpementing child classes can implement their behaviour.
+        /// Called every frame that the behaviour is active.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Status at the end of the update tick.</returns>
         protected virtual Status UpdateInternal()
         {
             return CurrentStatus;
         }
 
-        /// <summary>
-        /// Terminate the behavior.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Terminate()
         {
             IsTerminated = true;
@@ -123,15 +111,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Terminate();
         }
 
+        /// <inheritdoc />
         public void StartBehaviour()
         {
             if (IsTerminated)
                 Tree.StartBehaviour(this);
         }
-        
-        /// <summary>
-        /// Suspends the <see cref="IBehaviour"/>.
-        /// </summary>
+
+        /// <inheritdoc />
         public void Suspend()
         {
             Tree.SuspendBehaviour(this);

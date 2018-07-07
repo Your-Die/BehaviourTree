@@ -4,6 +4,9 @@ namespace Chinchillada.BehaviourSelections.Utilities
 {
     public static class MathHelper
     {
+        /// <summary>
+        /// Calculates the square of the <see cref="value"/>.
+        /// </summary> 
         public static float Square(this float value)
         {
             return Mathf.Pow(value, 2);

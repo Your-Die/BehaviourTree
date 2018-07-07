@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
     /// <summary>
-    /// Base class for tasks that handle moving.
+    /// Base class for <see cref="Task"/>s that handle moving.
     /// </summary>
     public abstract class MovementTask : Task
     {
@@ -60,6 +60,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             Targeter.TargetChanged -= SetTarget;
         }
 
+        /// <summary>
+        /// Called when this object is destroyed.
+        ///  </summary>
         protected virtual void OnDestroy()
         {
             //Ensure no lingering events are triggered.

@@ -12,6 +12,10 @@
         /// </summary>
         private int _conditionIndex;
 
+        /// <summary>
+        /// Construct a new <see cref="Filter"/> for the <paramref name="tree"/>.
+        /// </summary>
+        /// <param name="tree"></param>
         public Filter(BehaviourTree tree) : base(tree) { }
 
         /// <summary>

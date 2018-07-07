@@ -1,7 +1,7 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
 {
     /// <summary>
-    /// Behaviour builder for <see cref="Parallel"/>.
+    /// Behaviour builder for <see cref="Selector"/>.
     /// </summary>
     internal class SelectorBuilder : CompositeBuilder
     {

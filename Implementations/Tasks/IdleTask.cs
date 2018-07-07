@@ -4,7 +4,7 @@ using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
     /// <summary>
-    /// A task for idling for a given duration.
+    /// A <see cref="Task"/> for idling for a given duration.
     /// </summary>
     internal class IdleTask : Task
     {

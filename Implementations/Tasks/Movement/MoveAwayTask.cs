@@ -4,10 +4,13 @@ using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
 {
     /// <summary>
-    /// Task for moving away from a given target.
+    /// <see cref="MovementTask"/> that moves away from the target.
     /// </summary>
     internal class MoveAwayTask : MovementTask
     {
+        /// <summary>
+        /// The distance that is seen as far enough.
+        /// </summary>
         [SerializeField] private float _farEnoughDistance = 3;
 
         /// <inheritdoc />
@@ -15,7 +18,6 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         { 
             //Check if we're far enough.
             float distance = Targeter.DistanceToTarget();
-            
             if (distance > _farEnoughDistance)
                 return Status.Succes;
 

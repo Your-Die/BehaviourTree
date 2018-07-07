@@ -5,8 +5,12 @@ using UnityEngine;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
 {
+    /// <summary>
+    /// Base class for implementations of <see cref="IBehaviourBuilder"/> that build parent nodes.
+    /// </summary>
     public abstract class ParentBuilder : MonoBehaviour, IBehaviourBuilder
-    {
+    { 
+        /// <inheritdoc />
         public abstract IBehaviour Build(BehaviourTree tree);
 
         /// <summary>

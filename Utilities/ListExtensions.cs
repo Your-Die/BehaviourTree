@@ -10,6 +10,15 @@ namespace Chinchillada.BehaviourSelections.Utilities
     internal static class ListExtensions
     {
         /// <summary>
+        /// Invokes the <paramref name="action"/> on each element in the <paramref name="enumerable"/>.
+        /// </summary> 
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        {
+            foreach (T element in enumerable)
+                action(element);
+        }
+
+        /// <summary>
         /// Tries to find an element that satisfies the <paramref name="predicate"/>.
         /// </summary>
         /// <typeparam name="T">Type of elements in the collection.</typeparam>

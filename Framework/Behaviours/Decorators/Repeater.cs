@@ -1,7 +1,7 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
 {
     /// <summary>
-    /// A decorator behaviour that repeats its child behaviour a specified amount of times.
+    /// A <see cref="Decorator"/> <see cref="Behaviour"/> that repeats its child behaviour a specified amount of times.
     /// </summary>
     public class Repeater : Decorator
     {
@@ -46,7 +46,7 @@
             Child.Terminated -= OnChildTerminated;
 
             //Ensure child is also terminated.
-            if(!Child.IsTerminated)
+            if (!Child.IsTerminated)
                 Child.Terminate(CurrentStatus);
 
             base.Terminate();
@@ -59,16 +59,14 @@
         /// <param name="status">The status that the <paramref name="child"/> terminated with.</param>
         private void OnChildTerminated(IBehaviour child, Status status)
         {
-            //Increment and check if we repeated enough.
+            //Increment.
             _currentCount++;
-            if (_currentCount >= _count)
-            {
-                Terminate(Status.Succes);
-                return;
-            }
 
-            //Repeat.
-            Child.StartBehaviour();
+            //repeat or stop.
+            if (_currentCount < _count)
+                Child.StartBehaviour();
+            else
+                Terminate(Status.Succes);
         }
 
 

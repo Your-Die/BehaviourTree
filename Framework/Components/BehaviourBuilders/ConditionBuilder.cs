@@ -9,6 +9,9 @@ namespace Assets.BehaviourSelections.BahaviorTree.Builder
     /// </summary>
     public abstract class ConditionBuilder : MonoBehaviour, IBehaviourBuilder
     {
+        /// <summary>
+        /// The <see cref="Condition.Mode"/> that the <see cref="Condition"/> should use.
+        /// </summary>
         [SerializeField] private Condition.Mode _mode = Condition.Mode.CheckOnce;
 
         /// <summary>

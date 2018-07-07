@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Chinchillada.BehaviourSelections.Utilities
@@ -8,6 +9,9 @@ namespace Chinchillada.BehaviourSelections.Utilities
     /// </summary>
     internal static class TransformExtensions
     {
+        /// <summary>
+        /// Finds components of the given type at all direct (first-layer) children of the <paramref name="transform"/>.
+        /// </summary>
         public static IEnumerable<T> GetComponentsInDirectChildren<T>(this Transform transform)
         {
             return transform.GetComponentsAtLayer<T>(1);
@@ -24,16 +28,7 @@ namespace Chinchillada.BehaviourSelections.Utilities
         {
             //Get the layer.
             IEnumerable<Transform> layerTransforms = transform.GetChildLayer(layer);
-
-            //Get all components at that layer.
-            List<T> behaviours = new List<T>();
-            foreach (Transform transformInLayer in layerTransforms)
-            {
-                T[] transformComponents = transformInLayer.GetComponents<T>();
-                behaviours.AddRange(transformComponents);
-            }
-
-            return behaviours;
+            return layerTransforms.SelectMany(transformInLayer => transformInLayer.GetComponents<T>());
         }
 
         /// <summary>

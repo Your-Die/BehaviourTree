@@ -19,6 +19,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// </summary>
         private void Awake()
         {
+            //Build the tree.
             if(_behaviourTree == null)
                 Build();
         }
@@ -37,6 +38,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         [ContextMenu("Build Tree")]
         public void Build()
         {
+            //Find root builder.
             IBehaviourBuilder rootBuilder = GetComponent<IBehaviourBuilder>();
             if (rootBuilder == null)
             {
@@ -45,6 +47,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
             }
             else
             {
+                //Build the tree by building the root, which builds its children and so on.
                 _behaviourTree = new BehaviourTree();
                 IBehaviour root = rootBuilder.Build(_behaviourTree);
                 _behaviourTree.Root = root;

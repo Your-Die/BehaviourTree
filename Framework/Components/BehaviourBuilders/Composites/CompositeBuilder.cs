@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Chinchillada.BehaviourSelections.Utilities;
 
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
 {
@@ -26,12 +27,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// Initializes the children for the <paramref name="composite"/>.
         /// </summary>
         /// <param name="composite">The composite we want to initialize the children for.</param>
+        /// <param name="tree">The tree this <see cref="IBehaviourBuilder"/> is building it's behaviour.</param>
         protected virtual void InitializeChildren(Composite composite, BehaviourTree tree)
         {
+            //Build and register the children.
             IEnumerable<IBehaviour> children = BuildChildren(transform, tree);
-
-            foreach (IBehaviour child in children)
-                composite.AddChild(child);
+            children.ForEach(composite.AddChild);
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace Chinchillada.BehaviourSelections.BehaviourTree
 {
     /// <summary>
-    /// base class for behaviours that add additional functionality to the child behaviour it decorates.
+    /// base class for behaviours that decorate the <see cref="Child"/> <see cref="IBehaviour"/> with additional behaviour.
     /// </summary>
     public abstract class Decorator : Behaviour
     {

@@ -20,7 +20,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         Behaviour.Status CurrentStatus { get; }
         
         /// <summary>
-        /// If the behaviour is terminated or not.
+        /// Wether the behaviour is terminated or not.
         /// </summary>
         bool IsTerminated { get; }
 
@@ -40,7 +40,10 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         /// <param name="status">The status to terminate with.</param>
         void Terminate(Behaviour.Status status);
-
+        
+        /// <summary>
+        /// Starts this <see cref="Behaviour"/> as active behaviour in the <see cref="Tree"/>.
+        /// </summary>
         void StartBehaviour();
 
         /// <summary>
