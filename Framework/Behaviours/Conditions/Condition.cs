@@ -10,7 +10,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Interprets the result.
         /// </summary>
-        private readonly IResultIntepreter _interpreter;
+        private readonly IResultInterpreter _interpreter;
 
         /// <summary>
         /// The predicate that defines this condition.

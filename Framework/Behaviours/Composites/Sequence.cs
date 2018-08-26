@@ -11,7 +11,7 @@
         public int CurrentChildIndex { get; private set; }
 
         /// <summary>
-        /// Construct a new <see cref="Sequence`"/> composite.
+        /// Construct a new <see cref="Sequence"/> composite.
         /// </summary>
         /// <param name="tree">The tree this <see cref="IBehaviour"/> is a part of.</param>
         public Sequence(BehaviourTree tree) : base(tree) { }
@@ -59,7 +59,7 @@
             //Terminate if it was the last child.
             CurrentChildIndex++;
             if (CurrentChildIndex >= Children.Count)
-                Terminate(Status.Succes);
+                Terminate(Status.Success);
             else
                 //Start next child.
                 StartCurrentChild();

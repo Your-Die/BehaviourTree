@@ -9,7 +9,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     internal class MoveTowardsTask : MovementTask
     {
         /// <summary>
-        /// The distance that is close enough to coutn as a <see cref="Status.Succes"/>.
+        /// The distance that is close enough to coutn as a <see cref="Status.Success"/>.
         /// </summary>
         [SerializeField] private float _targetReachedDistance = 0.1f;
 
@@ -23,7 +23,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             //Check if close enough. 
             float distance = Targeter.DistanceToTarget(); 
             if (distance < _targetReachedDistance)
-                return Status.Succes;
+                return Status.Success;
 
             //Move towards target. 
             Vector3 direction = Targeter.DirectionToTarget();

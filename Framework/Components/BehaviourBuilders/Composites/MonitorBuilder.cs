@@ -10,7 +10,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// <summary>
         /// The policy used for determining success.
         /// </summary>
-        [SerializeField] private Parallel.Policy _succesPolicy = Parallel.Policy.RequireAll;
+        [SerializeField] private Parallel.Policy _successPolicy = Parallel.Policy.RequireAll;
 
         /// <summary>
         /// The policy used for determining failure.
@@ -20,7 +20,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// <inheritdoc />
         protected override Composite ConstructComposite(BehaviourTree tree)
         {
-            return new Monitor(tree, _succesPolicy, _failurePolicy);
+            return new Monitor(tree, _successPolicy, _failurePolicy);
         }
     }
 }

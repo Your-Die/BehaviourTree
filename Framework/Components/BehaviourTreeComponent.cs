@@ -39,7 +39,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         public void Build()
         {
             //Find root builder.
-            IBehaviourBuilder rootBuilder = GetComponent<IBehaviourBuilder>();
+            IBehaviourBuilder rootBuilder = GetComponentInChildren<IBehaviourBuilder>();
             if (rootBuilder == null)
             {
                 Debug.LogWarning("No Behaviour builder found as sibling of behaviour tree component.");

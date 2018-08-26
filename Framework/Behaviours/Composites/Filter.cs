@@ -28,6 +28,7 @@
             _conditionIndex++;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Adds a new action.
         /// </summary>

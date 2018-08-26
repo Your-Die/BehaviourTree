@@ -4,20 +4,18 @@ using UnityEngine;
 namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
 {
     /// <summary>
-    /// Behaviour builder for <see cref="Repeater"/>.
+    /// Behaviour builder for <see cref="FiniteRepeater"/>.
     /// </summary>
-    public class RepeaterBuilder : ParentBuilder
+    public class FiniteRepeaterBuilder : DecoratorBuilder
     {
         /// <summary>
         /// The amount of times to repeat the <see cref="Decorator.Child"/>.
         /// </summary>
         [SerializeField] private int _repeatCount = 4;
 
-        /// <inheritdoc />
-        public override IBehaviour Build(BehaviourTree tree)
+        protected override IBehaviour BuildDecorator(BehaviourTree tree, IBehaviour child)
         {
-            IBehaviour child = BuildChildren(transform, tree).First();
-            return new Repeater(tree, child, _repeatCount);
+            return new FiniteRepeater(tree, child, _repeatCount);
         }
     }
 }

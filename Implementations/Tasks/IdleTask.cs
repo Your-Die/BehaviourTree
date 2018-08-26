@@ -33,7 +33,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         /// </summary>
         private void Finish()
         {
-            Behaviour.Terminate(Status.Succes);
+            Behaviour.Terminate(Status.Success);
         }
     }
 }

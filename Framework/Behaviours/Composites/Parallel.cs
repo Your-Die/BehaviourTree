@@ -26,9 +26,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         private LinkedList<IBehaviour> _activeChildren;
 
         /// <summary>
-        /// The sucessful children up until now.
+        /// The successful children up until now.
         /// </summary>
-        private readonly HashSet<IBehaviour> _succesfulChildren = new HashSet<IBehaviour>();
+        private readonly HashSet<IBehaviour> _successfulChildren = new HashSet<IBehaviour>();
 
         /// <summary>
         /// The failed children up until now.
@@ -52,7 +52,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <summary>
-        /// Construct a new Parralel composite behaviour.
+        /// Construct a new Parallel composite behaviour.
         /// </summary>
         /// <param name="tree">The tree this behaviour belongs in.</param>
         /// <param name="successPolicy">The success policy.</param>
@@ -61,7 +61,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             : base(tree)
         {
             if (successPolicy == Policy.RequireAll && successPolicy == failurePolicy)
-                throw new ArgumentException("Success and failure policies can't both be require-all, will never terminate.");
+                throw new ArgumentException("Success and failure policies can't both be require-all, will possibly never terminate.");
 
             SuccessPolicy = successPolicy;
             FailurePolicy = failurePolicy;
@@ -74,7 +74,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
 
             // Initialize the collections of children.
             _activeChildren = new LinkedList<IBehaviour>(Children);
-            _succesfulChildren.Clear();
+            _successfulChildren.Clear();
             _failedChildren.Clear();
 
             //Start each child behaviour.
@@ -116,18 +116,22 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             //Check if either policy is reached.
             switch (status)
             {
-                case Status.Succes:
-                    _succesfulChildren.Add(child);
-                    if (ValidatePolicy(SuccessPolicy, _succesfulChildren))
-                        Terminate(Status.Succes);
+                case Status.Success:
+                {
+                    _successfulChildren.Add(child);
+                    if (ValidatePolicy(SuccessPolicy, _successfulChildren))
+                        Terminate(Status.Success);
 
                     break;
+                }
                 case Status.Failure:
+                {
                     _failedChildren.Add(child);
                     if (ValidatePolicy(FailurePolicy, _failedChildren))
                         Terminate(Status.Failure);
 
-                    break; 
+                    break;
+                }
             } 
         }
 
@@ -139,11 +143,17 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             switch (policy)
             {
                 case Policy.RequireOne:
+                {
                     return policySet.Any();
+                }
                 case Policy.RequireAll:
+                {
                     return policySet.Count >= Children.Count;
+                }
                 default:
+                {
                     throw new ArgumentOutOfRangeException();
+                }
             }
         }
     }

@@ -26,13 +26,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Runs the action once and returns the result as status.
         /// </summary>
         /// <returns>
-        /// <see cref="Behaviour.Status.Succes"/> if the action was completed succesfully, 
+        /// <see cref="Behaviour.Status.Success"/> if the action was completed succesfully, 
         /// <see cref="Behaviour.Status.Failure"/> if it failed.
         /// </returns>
         protected override Status UpdateInternal()
         {
             return _action()
-                ? Status.Succes
+                ? Status.Success
                 : Status.Failure;
         }
     }

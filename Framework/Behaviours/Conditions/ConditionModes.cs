@@ -10,8 +10,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Dictionary for the interpreters for each mode.
         /// </summary>
-        private static readonly Dictionary<Mode, IResultIntepreter> Interpreters =
-            new Dictionary<Mode, IResultIntepreter>
+        private static readonly Dictionary<Mode, IResultInterpreter> Interpreters =
+            new Dictionary<Mode, IResultInterpreter>
             {
                 {Mode.CheckOnce, new InstantCheck() },
                 {Mode.Monitoring, new Monitor() }
@@ -33,7 +33,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Interface for classes that interpret condition results.
         /// </summary>
-        private interface IResultIntepreter
+        private interface IResultInterpreter
         {
             Status Interpret(bool result);
         }
@@ -41,18 +41,18 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Checks the result and makes the behaviour terminate immediately.
         /// </summary>
-        private class InstantCheck : IResultIntepreter
+        private class InstantCheck : IResultInterpreter
         {
             public Status Interpret(bool result)
             {
-                return result ? Status.Succes : Status.Failure;
+                return result ? Status.Success : Status.Failure;
             }
         }
 
         /// <summary>
         /// Keeps the behaviour active until the condition fails.
         /// </summary>
-        private class Monitor : IResultIntepreter
+        private class Monitor : IResultInterpreter
         {
             public Status Interpret(bool result)
             {

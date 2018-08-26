@@ -23,9 +23,9 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             Running,
 
             /// <summary>
-            /// The status when the behavior ended succesfully.
+            /// The status when the behavior ended successfully.
             /// </summary>
-            Succes,
+            Success,
 
             /// <summary>
             /// The status when the behavior terminated in failure.
@@ -88,7 +88,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <summary>
-        /// Virtual sandbox method where imlpementing child classes can implement their behaviour.
+        /// Virtual sandbox method where implementing child classes can implement their behaviour.
         /// Called every frame that the behaviour is active.
         /// </summary>
         /// <returns>Status at the end of the update tick.</returns>
@@ -116,6 +116,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         {
             if (IsTerminated)
                 Tree.StartBehaviour(this);
+        }
+
+        /// <inheritdoc />
+        public void StartNextFrame()
+        {
+            Tree.StartNextFrame(this);
         }
 
         /// <inheritdoc />

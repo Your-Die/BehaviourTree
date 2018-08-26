@@ -21,5 +21,27 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         {
             Child = child;
         }
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            Child.Terminated += OnChildTerminated;
+        }
+
+
+        public override void Terminate()
+        {
+            Child.Terminated -= OnChildTerminated;
+
+            //Ensure child is also terminated.
+            if (!Child.IsTerminated)
+                Child.Terminate(CurrentStatus);
+
+            base.Terminate();
+        }
+
+
+        protected abstract void OnChildTerminated(IBehaviour child, Status status);
     }
 }

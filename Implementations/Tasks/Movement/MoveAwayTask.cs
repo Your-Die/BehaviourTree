@@ -19,7 +19,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
             //Check if we're far enough.
             float distance = Targeter.DistanceToTarget();
             if (distance > _farEnoughDistance)
-                return Status.Succes;
+                return Status.Success;
 
             //Move away.
             Vector2 directionToTarget = Targeter.DirectionToTarget();

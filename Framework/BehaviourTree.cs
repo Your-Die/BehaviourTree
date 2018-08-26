@@ -78,6 +78,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <summary>
+        /// Activates the <paramref name="behaviour"/> the next frame.
+        /// </summary>
+        /// <param name="behaviour"></param>
+        public void StartNextFrame(IBehaviour behaviour)
+        {
+            _activeBehaviours.AddLast(behaviour);
+        }
+
+        /// <summary>
         /// Stop the <paramref name="behaviour"/>.
         /// </summary>
         /// <param name="behaviour">The <see cref="IBehaviour"/> we want to stop.</param>

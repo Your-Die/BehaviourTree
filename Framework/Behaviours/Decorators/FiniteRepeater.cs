@@ -3,7 +3,7 @@
     /// <summary>
     /// A <see cref="Decorator"/> <see cref="Behaviour"/> that repeats its child behaviour a specified amount of times.
     /// </summary>
-    public class Repeater : Decorator
+    public class FiniteRepeater : Decorator
     {
         /// <summary>
         /// The amount of times to repeat the <see cref="Decorator.Child"/>.
@@ -21,7 +21,7 @@
         /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> belongs to.</param>
         /// <param name="child">The child behaviour we want to repeat.</param>
         /// <param name="count">The amount of times we want to repeat the <paramref name="child"/>.</param>
-        public Repeater(BehaviourTree tree, IBehaviour child, int count) : base(tree, child)
+        public FiniteRepeater(BehaviourTree tree, IBehaviour child, int count) : base(tree, child)
         {
             _count = count;
         }
@@ -35,21 +35,8 @@
             _currentCount = 0;
 
             //Start child.
-            Child.Terminated += OnChildTerminated;
             Child.StartBehaviour();
-        }
-
-        /// <inheritdoc />
-        public override void Terminate()
-        {
-            //Unsubscribe from child.
-            Child.Terminated -= OnChildTerminated;
-
-            //Ensure child is also terminated.
-            if (!Child.IsTerminated)
-                Child.Terminate(CurrentStatus);
-
-            base.Terminate();
+            Suspend();
         }
 
         /// <summary>
@@ -57,7 +44,7 @@
         /// </summary>
         /// <param name="child">The child.</param>
         /// <param name="status">The status that the <paramref name="child"/> terminated with.</param>
-        private void OnChildTerminated(IBehaviour child, Status status)
+        protected override void OnChildTerminated(IBehaviour child, Status status)
         {
             //Increment.
             _currentCount++;
@@ -66,9 +53,7 @@
             if (_currentCount < _count)
                 Child.StartBehaviour();
             else
-                Terminate(Status.Succes);
+                Terminate(Status.Success);
         }
-
-
     }
 }

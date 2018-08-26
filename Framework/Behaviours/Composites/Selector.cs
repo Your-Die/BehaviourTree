@@ -51,9 +51,9 @@
             currentChild.Terminated -= OnCurrentChildTerminated;
 
             //Stop if the child failed.
-            if (childStatus == Status.Succes)
+            if (childStatus == Status.Success)
             {
-                Terminate(Status.Succes);
+                Terminate(Status.Success);
                 return;
             }
 

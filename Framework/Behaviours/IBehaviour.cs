@@ -20,12 +20,12 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         Behaviour.Status CurrentStatus { get; }
         
         /// <summary>
-        /// Wether the behaviour is terminated or not.
+        /// Whether the behaviour is terminated or not.
         /// </summary>
         bool IsTerminated { get; }
 
         /// <summary>
-        /// Updates the behavour.
+        /// Updates the behaviour.
         /// </summary>
         /// <returns>The status after the update.</returns>
         Behaviour.Status Tick();
@@ -42,9 +42,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         void Terminate(Behaviour.Status status);
         
         /// <summary>
-        /// Starts this <see cref="Behaviour"/> as active behaviour in the <see cref="Tree"/>.
+        /// Starts this <see cref="IBehaviour"/> as active behaviour in the <see cref="Tree"/>.
         /// </summary>
         void StartBehaviour();
+
+        /// <summary>
+        /// Starts this <see cref="IBehaviour"/> as an active behaviour in the next frame.
+        /// </summary>
+        void StartNextFrame();
 
         /// <summary>
         /// Suspends the <see cref="IBehaviour"/>.
