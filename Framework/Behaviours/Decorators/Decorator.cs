@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Chinchillada.BehaviourSelections.BehaviorTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// base class for behaviours that decorate the <see cref="Child"/> <see cref="IBehavior"/> with additional behaviour.
+    /// base class for behaviors that decorate the <see cref="Child"/> <see cref="IBehavior"/> with additional behaviour.
     /// </summary>
     public abstract class Decorator : Behavior
     {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
 namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
@@ -9,7 +8,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
     internal class MoveTowardsTask : MovementTask
     {
         /// <summary>
-        /// The distance that is close enough to coutn as a <see cref="Behavior.Status.Success"/>.
+        /// The distance that is close enough to count as a <see cref="Behavior.Status.Success"/>.
         /// </summary>
         [SerializeField] private float _targetReachedDistance = 0.1f;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
@@ -10,7 +11,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
         /// <summary>
         /// The policy used for determining success.
         /// </summary>
-        [SerializeField] private Parallel.Policy _succesPolicy;
+        [FormerlySerializedAs("_succesPolicy")] [SerializeField] private Parallel.Policy _successPolicy;
 
         /// <summary>
         /// The policy used for determining failure.
@@ -23,7 +24,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
         /// <inheritdoc />
         protected override Composite ConstructComposite(BehaviourTree tree)
         {
-            return new Parallel(tree, _succesPolicy, _failurePolicy);
+            return new Parallel(tree, _successPolicy, _failurePolicy);
         }
 
     }

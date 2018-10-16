@@ -3,7 +3,7 @@
 namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// A behaviour that runs in a single action and immediately returns if it was succesful or not.
+    /// A behaviour that runs in a single action and immediately returns if it was successful or not.
     /// </summary>
     public class Action : Behavior
     {
@@ -26,7 +26,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree
         /// Runs the action once and returns the result as status.
         /// </summary>
         /// <returns>
-        /// <see cref="Behavior.Status.Success"/> if the action was completed succesfully, 
+        /// <see cref="Behavior.Status.Success"/> if the action was completed successfully, 
         /// <see cref="Behavior.Status.Failure"/> if it failed.
         /// </returns>
         protected override Status UpdateInternal()

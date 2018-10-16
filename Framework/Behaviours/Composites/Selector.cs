@@ -1,7 +1,7 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// A composite behaviour that tries each of his child behaviours until one succeeds.
+    /// A composite behaviour that tries each of his child behaviors until one succeeds.
     /// </summary>
     public class Selector : Composite
     {

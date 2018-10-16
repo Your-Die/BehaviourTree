@@ -4,18 +4,18 @@ using UnityEngine;
 namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
-    /// Base abstract class for builders of <see cref="IConditionalComposite"/> behaviours.
+    /// Base abstract class for builders of <see cref="IConditionalComposite"/> behaviors.
     /// </summary>
     [ExecuteInEditMode]
     internal abstract class ConditionalCompositeBuilder : CompositeBuilder
     {
         /// <summary>
-        /// Parent object for condition behaviours.
+        /// Parent object for condition behaviors.
         /// </summary>
         [SerializeField] private GameObject _conditionsParent;
 
         /// <summary>
-        /// Parent object for action behaviours.
+        /// Parent object for action behaviors.
         /// </summary>
         [SerializeField] private GameObject _actionsParent;
 

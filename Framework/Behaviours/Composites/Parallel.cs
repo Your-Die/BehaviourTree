@@ -92,7 +92,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree
         /// <inheritdoc />
         public override void Terminate()
         {
-            //Stop any remaining active behaviours.
+            //Stop any remaining active behaviors.
             foreach (IBehavior child in _activeChildren)
             {
                 child.Terminated -= OnChildTerminated;
@@ -106,7 +106,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree
         /// Called when the <paramref name="child"/> has terminated.
         /// </summary>
         /// <param name="child">The child that has terminated.</param>
-        /// <param name="status">The status the <paramref name="child"/> termianted with.</param>
+        /// <param name="status">The status the <paramref name="child"/> terminated with.</param>
         private void OnChildTerminated(IBehavior child, Status status)
         {
             //Remove from active list.

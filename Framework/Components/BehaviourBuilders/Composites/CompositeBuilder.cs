@@ -4,7 +4,7 @@ using Chinchillada.BehaviourSelections.Utilities;
 namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
-    /// Abstract base class for <see cref="IBehaviourBuilder"/> that build <see cref="Composite"/> behaviours.
+    /// Abstract base class for <see cref="IBehaviourBuilder"/> that build <see cref="Composite"/> behaviors.
     /// </summary>
     public abstract class CompositeBuilder : ParentBuilder
     {

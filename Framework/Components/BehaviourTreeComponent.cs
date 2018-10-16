@@ -10,7 +10,7 @@ namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
         [SerializeField, HideInInspector] private BehaviourTree _behaviourTree;
 
         /// <summary>
-        /// Wether the tree has been build or not.
+        /// Whether the tree has been build or not.
         /// </summary>
         public bool IsBuild { get; private set; }
 

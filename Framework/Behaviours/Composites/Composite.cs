@@ -3,12 +3,12 @@
 namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// Base class for behaviours that manipulate or manage multiple child behaviours.
+    /// Base class for behaviors that manipulate or manage multiple child behaviors.
     /// </summary>
     public abstract class Composite : Behavior
     {
         /// <summary>
-        /// The children behaviours this Composite manipulates.
+        /// The children behaviors this Composite manipulates.
         /// </summary>
         protected readonly List<IBehavior> Children = new List<IBehavior>();
         

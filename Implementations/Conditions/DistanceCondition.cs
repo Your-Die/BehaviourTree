@@ -10,7 +10,7 @@ internal class DistanceCondition : ConditionBuilder
     /// <summary>
     /// The lower bound of the range of allowed distances.
     /// </summary>
-    [SerializeField] private float _minDistance = 0;
+    [SerializeField] private float _minDistance;
 
     /// <summary>
     /// The upper bound of the range of allowed distances.

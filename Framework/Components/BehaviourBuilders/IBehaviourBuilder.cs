@@ -1,7 +1,7 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
-    /// Interface for Unity components that are used to build behaviours for building a behaviour tree.
+    /// Interface for Unity components that are used to build behaviors for building a behaviour tree.
     /// </summary>
     internal interface IBehaviourBuilder
     {

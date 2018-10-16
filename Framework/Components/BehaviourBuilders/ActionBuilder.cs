@@ -1,6 +1,4 @@
-﻿using Assets.BehaviourSelections.BehaviorTree.Builder;
-
-namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
     /// Base class for <see cref="IBehaviourBuilder"/> implementations that build <see cref="Action"/> behaviors.

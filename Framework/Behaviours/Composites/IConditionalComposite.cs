@@ -1,7 +1,7 @@
 ﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// Interface for <see cref="Composite"/> behaviours that seperate conditional child behaviours from action child behaviours.
+    /// Interface for <see cref="Composite"/> behaviors that separate conditional child behaviors from action child behaviors.
     /// </summary>
     public interface IConditionalComposite
     {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
 namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
