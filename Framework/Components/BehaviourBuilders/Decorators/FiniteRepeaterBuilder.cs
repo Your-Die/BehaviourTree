@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
-    /// Behaviour builder for <see cref="FiniteRepeater"/>.
+    /// Behavior builder for <see cref="FiniteRepeater"/>.
     /// </summary>
     public class FiniteRepeaterBuilder : DecoratorBuilder
     {
@@ -13,7 +13,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// </summary>
         [SerializeField] private int _repeatCount = 4;
 
-        protected override IBehaviour BuildDecorator(BehaviourTree tree, IBehaviour child)
+        protected override IBehavior BuildDecorator(BehaviourTree tree, IBehavior child)
         {
             return new FiniteRepeater(tree, child, _repeatCount);
         }

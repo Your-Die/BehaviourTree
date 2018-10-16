@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Linq;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     public abstract class DecoratorBuilder : ParentBuilder
     {
-        public override IBehaviour Build(BehaviourTree tree)
+        /// <inheritdoc />
+        protected override string TypeName => "Decorator";
+
+        public override IBehavior Build(BehaviourTree tree)
         {
-            IBehaviour child = BuildChildren(transform, tree).First();
+            IBehavior child = BuildChildren(transform, tree).First();
             return BuildDecorator(tree, child);
         }
 
-        protected abstract IBehaviour BuildDecorator(BehaviourTree tree, IBehaviour child); 
+        protected abstract IBehavior BuildDecorator(BehaviourTree tree, IBehavior child); 
     }
 }

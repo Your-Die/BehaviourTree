@@ -1,7 +1,7 @@
 ﻿using Chinchillada.Movement;
 using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
     /// <summary>
     /// Base class for <see cref="Task"/>s that handle moving.
@@ -53,7 +53,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         }
 
         /// <inheritdoc />
-        protected override void OnTemination()
+        protected override void OnTermination()
         {
             //Stop moving.
             MovementController.StopMovement();

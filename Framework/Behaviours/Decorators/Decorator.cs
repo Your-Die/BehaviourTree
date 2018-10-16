@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// base class for behaviours that decorate the <see cref="Child"/> <see cref="IBehaviour"/> with additional behaviour.
+    /// base class for behaviours that decorate the <see cref="Child"/> <see cref="IBehavior"/> with additional behaviour.
     /// </summary>
-    public abstract class Decorator : Behaviour
+    public abstract class Decorator : Behavior
     {
         /// <summary>
         /// The child this behaviour decorates.
         /// </summary>
-        internal IBehaviour Child { get; set; }
+        internal IBehavior Child { get; set; }
 
         /// <summary>
-        /// Construct a new Decorator Behaviour.
+        /// Construct a new Decorator Behavior.
         /// </summary>
         /// <param name="tree">The behaviour tree this node is a part of.</param>
         /// <param name="child"><see cref="Child"/>.</param>
-        protected Decorator(BehaviourTree tree, IBehaviour child) : base(tree)
+        protected Decorator(BehaviourTree tree, IBehavior child) : base(tree)
         {
             Child = child;
         }
@@ -42,6 +42,6 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
 
-        protected abstract void OnChildTerminated(IBehaviour child, Status status);
+        protected abstract void OnChildTerminated(IBehavior child, Status status);
     }
 }

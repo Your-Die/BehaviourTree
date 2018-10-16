@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A composite behaviour that tries each of his child behaviours until one succeeds.
@@ -13,7 +13,7 @@
         /// <summary>
         /// Construct a new <see cref="Selector"/>.
         /// </summary>
-        /// <param name="tree">The tree this <see cref="IBehaviour"/> is a part of.</param>
+        /// <param name="tree">The tree this <see cref="IBehavior"/> is a part of.</param>
         public Selector(BehaviourTree tree) : base(tree) { }
 
         /// <inheritdoc />
@@ -35,7 +35,7 @@
         private void StartCurrentChild()
         {
             //Get the current child and subscribe to it's termination event.
-            IBehaviour currentChild = Children[CurrentChildIndex];
+            IBehavior currentChild = Children[CurrentChildIndex];
             currentChild.Terminated += OnCurrentChildTerminated;
 
             //Start.
@@ -45,7 +45,7 @@
         /// <summary>
         /// Called when the current child is terminated.
         /// </summary>
-        protected void OnCurrentChildTerminated(IBehaviour currentChild, Status childStatus)
+        protected void OnCurrentChildTerminated(IBehavior currentChild, Status childStatus)
         {
             //Unsubscribe.
             currentChild.Terminated -= OnCurrentChildTerminated;

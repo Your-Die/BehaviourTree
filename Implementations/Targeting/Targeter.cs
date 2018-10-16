@@ -1,5 +1,5 @@
 ﻿using System;
-using Chinchillada.BehaviourSelections.BehaviourTree.Tasks;
+using Chinchillada.BehaviourSelections.BehaviorTree.Tasks;
 using UnityEngine;
 
 /// <summary>

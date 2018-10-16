@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A behaviour in a behaviour tree.
     /// </summary>
-    public abstract class Behaviour : IBehaviour
+    public abstract class Behavior : IBehavior
     {
         /// <summary>
         /// The status.
@@ -39,7 +39,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         }
 
         /// <inheritdoc />
-        public event Action<IBehaviour, Status> Terminated;
+        public event Action<IBehavior, Status> Terminated;
 
         /// <inheritdoc />
         public BehaviourTree Tree { get; set; }
@@ -51,10 +51,10 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public bool IsTerminated { get; private set; } = true;
         
         /// <summary>
-        /// Construct a new <see cref="Behaviour"/>.
+        /// Construct a new <see cref="Behavior"/>.
         /// </summary>
-        /// <param name="tree">The tree this <see cref="IBehaviour"/> is a part of.</param>
-        protected Behaviour(BehaviourTree tree)
+        /// <param name="tree">The tree this <see cref="IBehavior"/> is a part of.</param>
+        protected Behavior(BehaviourTree tree)
         {
             Tree = tree;
         }

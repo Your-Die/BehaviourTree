@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
     /// Base abstract class for builders of <see cref="IConditionalComposite"/> behaviours.
@@ -52,13 +52,13 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
             IConditionalComposite conditionalComposite = (IConditionalComposite) composite;
 
             //Build children.
-            IEnumerable<IBehaviour> conditions = BuildChildren(_conditionsParent.transform, tree);
-            IEnumerable<IBehaviour> actions = BuildChildren(_actionsParent.transform, tree);
+            IEnumerable<IBehavior> conditions = BuildChildren(_conditionsParent.transform, tree);
+            IEnumerable<IBehavior> actions = BuildChildren(_actionsParent.transform, tree);
 
             //Add children.
-            foreach (IBehaviour condition in conditions)
+            foreach (IBehavior condition in conditions)
                 conditionalComposite.AddCondition(condition);
-            foreach (IBehaviour action in actions)
+            foreach (IBehavior action in actions)
                 conditionalComposite.AddAction(action);
         }
     }

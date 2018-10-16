@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
+using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     internal class StatusInterpreterBuilder : DecoratorBuilder
     {
         [SerializeField] private StatusMap[] _mapping;
         
-        protected override IBehaviour BuildDecorator(BehaviourTree tree, IBehaviour child)
+        protected override IBehavior BuildDecorator(BehaviourTree tree, IBehavior child)
         {
-            Dictionary<Status, Status> dictionary = BuildDictionary();
+            Dictionary<Behavior.Status, Behavior.Status> dictionary = BuildDictionary();
             return new StatusInterpreter(tree, child, dictionary);
         }
 
-        private Dictionary<Status, Status> BuildDictionary()
+        private Dictionary<Behavior.Status, Behavior.Status> BuildDictionary()
         {
-            Dictionary<Status, Status> dictionary = new Dictionary<Status, Status>();
+            Dictionary<Behavior.Status, Behavior.Status> dictionary = new Dictionary<Behavior.Status, Behavior.Status>();
 
             foreach (StatusMap statusMap in _mapping)
                 dictionary[statusMap.From] = statusMap.To;
@@ -28,8 +28,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         [Serializable]
         private struct StatusMap
         {
-            public Status From;
-            public Status To;
+            public Behavior.Status From;
+            public Behavior.Status To;
         }
     }
 }

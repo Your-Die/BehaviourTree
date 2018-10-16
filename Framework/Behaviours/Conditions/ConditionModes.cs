@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// Partial class that contains the implementations of the different condition modes.

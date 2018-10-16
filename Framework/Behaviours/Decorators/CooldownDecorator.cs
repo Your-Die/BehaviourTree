@@ -1,11 +1,11 @@
-﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
 	public class CooldownDecorator : Decorator
 	{ 
 	    private readonly Timer _cooldownTimer;
 	    private readonly bool _failOnCooldown;
 
-        public CooldownDecorator(BehaviourTree tree, IBehaviour child, Timer cooldownTimer, bool failOnCooldown) : base(tree, child)
+        public CooldownDecorator(BehaviourTree tree, IBehavior child, Timer cooldownTimer, bool failOnCooldown) : base(tree, child)
 	    {
 	        _cooldownTimer = cooldownTimer;
 	        _failOnCooldown = failOnCooldown;
@@ -36,7 +36,7 @@
             base.Terminate();
 	    }
 
-	    protected override void OnChildTerminated(IBehaviour child, Status status)
+	    protected override void OnChildTerminated(IBehavior child, Status status)
 	    {
             _cooldownTimer.Start();
             Terminate(status);

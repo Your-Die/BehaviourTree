@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Assets.BehaviourSelections.BahaviorTree.Builder;
-using Chinchillada.BehaviourSelections.BehaviourTree.Tasks;
+using Assets.BehaviourSelections.BehaviorTree.Builder;
+using Chinchillada.BehaviourSelections.BehaviorTree.Tasks;
 
 /// <summary>
 /// Condition that checks if the game object is in a given range of it's target.

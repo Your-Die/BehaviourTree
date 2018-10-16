@@ -1,8 +1,8 @@
-﻿using Assets.BehaviourSelections.BahaviorTree.Builder;
-using Chinchillada.BehaviourSelections.BehaviourTree.Tasks;
+﻿using Assets.BehaviourSelections.BehaviorTree.Builder;
+using Chinchillada.BehaviourSelections.BehaviorTree.Tasks;
 using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// Condition that checks if a target is present.

@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// Interface for <see cref="Composite"/> behaviours that seperate conditional child behaviours from action child behaviours.
@@ -9,12 +9,12 @@
         /// Adds a new condition.
         /// </summary>
         /// <param name="condition">The condition to add.</param>
-        void AddCondition(IBehaviour condition);
+        void AddCondition(IBehavior condition);
 
         /// <summary>
         /// Adds a new action.
         /// </summary>
         /// <param name="action">The action to add.</param>
-        void AddAction(IBehaviour action);
+        void AddAction(IBehavior action);
     }
 }

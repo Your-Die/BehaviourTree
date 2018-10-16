@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
     /// <summary>
     /// Interface for components that handle finding and keeping track of any potential targets.

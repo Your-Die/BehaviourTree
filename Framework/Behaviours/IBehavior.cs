@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
-    public interface IBehaviour
+    public interface IBehavior
     {
         /// <summary>
-        /// Event invoked when this <see cref="IBehaviour"/> has terminated.
+        /// Event invoked when this <see cref="IBehavior"/> has terminated.
         /// </summary>
-        event Action<IBehaviour, Behaviour.Status> Terminated;
+        event Action<IBehavior, Behavior.Status> Terminated;
 
         /// <summary>
-        /// The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> is a part of.
+        /// The <see cref="BehaviourTree"/> this <see cref="IBehavior"/> is a part of.
         /// </summary>
         BehaviourTree Tree { get; }
 
         /// <summary>
         /// The current status.
         /// </summary>
-        Behaviour.Status CurrentStatus { get; }
+        Behavior.Status CurrentStatus { get; }
         
         /// <summary>
         /// Whether the behaviour is terminated or not.
@@ -28,7 +28,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Updates the behaviour.
         /// </summary>
         /// <returns>The status after the update.</returns>
-        Behaviour.Status Tick();
+        Behavior.Status Tick();
 
         /// <summary>
         /// Terminate the behavior.
@@ -39,25 +39,25 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Terminate the behaviour with the given status.
         /// </summary>
         /// <param name="status">The status to terminate with.</param>
-        void Terminate(Behaviour.Status status);
+        void Terminate(Behavior.Status status);
         
         /// <summary>
-        /// Starts this <see cref="IBehaviour"/> as active behaviour in the <see cref="Tree"/>.
+        /// Starts this <see cref="IBehavior"/> as active behaviour in the <see cref="Tree"/>.
         /// </summary>
         void StartBehaviour();
 
         /// <summary>
-        /// Starts this <see cref="IBehaviour"/> as an active behaviour in the next frame.
+        /// Starts this <see cref="IBehavior"/> as an active behaviour in the next frame.
         /// </summary>
         void StartNextFrame();
 
         /// <summary>
-        /// Suspends the <see cref="IBehaviour"/>.
+        /// Suspends the <see cref="IBehavior"/>.
         /// </summary>
         void Suspend();
 
         /// <summary>
-        /// Continues this <see cref="IBehaviour"/> if its <see cref="CurrentStatus"/> is <see cref="Behaviour.Status.Suspended"/>.
+        /// Continues this <see cref="IBehavior"/> if its <see cref="CurrentStatus"/> is <see cref="Behavior.Status.Suspended"/>.
         /// </summary>
         void Continue();
     }

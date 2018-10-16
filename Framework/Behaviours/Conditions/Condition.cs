@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A behavior in a behavior tree that only checks something.
     /// </summary>
-    public partial class Condition : Behaviour
+    public partial class Condition : Behavior
     {
         /// <summary>
         /// Interprets the result.
@@ -25,7 +25,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Construct a new Condition behaviour.
         /// </summary>
-        /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> belongs to.</param>
+        /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehavior"/> belongs to.</param>
         /// <param name="condition"><see cref="Predicate"/></param>
         /// <param name="mode"><see cref="Mode"/></param>
         public Condition(BehaviourTree tree, Func<bool> condition, Mode mode = Mode.CheckOnce) : base(tree)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
+using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
     /// <summary>
     /// A <see cref="Task"/> for idling for a given duration.
@@ -17,14 +17,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         protected override void OnInitialization()
         {
             //Wait for the duration.
-            Behaviour.Suspend();
+            Behavior.Suspend();
             Invoke(nameof(Finish), _duration);
         }
 
         /// <inheritdoc />
-        protected override Status UpdateInternal()
+        protected override Behavior.Status UpdateInternal()
         {
-            return Behaviour.Taskstatus;
+            return Behavior.TaskStatus;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         /// </summary>
         private void Finish()
         {
-            Behaviour.Terminate(Status.Success);
+            Behavior.Terminate(BehaviorTree.Behavior.Status.Success);
         }
     }
 }

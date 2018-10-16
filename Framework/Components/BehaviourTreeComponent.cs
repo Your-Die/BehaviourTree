@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
     /// Component that manages a behaviour tree build by <see cref="IBehaviourBuilder"/> on child objects.
@@ -42,14 +42,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
             IBehaviourBuilder rootBuilder = GetComponentInChildren<IBehaviourBuilder>();
             if (rootBuilder == null)
             {
-                Debug.LogWarning("No Behaviour builder found as sibling of behaviour tree component.");
+                Debug.LogWarning("No Behavior builder found as sibling of behaviour tree component.");
                 enabled = false;
             }
             else
             {
                 //Build the tree by building the root, which builds its children and so on.
                 _behaviourTree = new BehaviourTree();
-                IBehaviour root = rootBuilder.Build(_behaviourTree);
+                IBehavior root = rootBuilder.Build(_behaviourTree);
                 _behaviourTree.Root = root;
 
                 IsBuild = true;

@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A sequence behaviour that first forces its conditions before running its actions.
@@ -22,7 +22,7 @@
         /// Adds a new condition.
         /// </summary>
         /// <param name="condition">The condition to add.</param>
-        public void AddCondition(IBehaviour condition)
+        public void AddCondition(IBehavior condition)
         {
             Children.Insert(_conditionIndex, condition);
             _conditionIndex++;
@@ -33,7 +33,7 @@
         /// Adds a new action.
         /// </summary>
         /// <param name="action">The action to add.</param>
-        public void AddAction(IBehaviour action)
+        public void AddAction(IBehavior action)
         {
             Children.Add(action);
         }

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
-    /// Behaviour builder for <see cref="Monitor"/>.
+    /// Behavior builder for <see cref="Monitor"/>.
     /// </summary>
     internal class MonitorBuilder : ConditionalCompositeBuilder
     {
@@ -16,11 +16,15 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         /// The policy used for determining failure.
         /// </summary>
         [SerializeField] private Parallel.Policy _failurePolicy = Parallel.Policy.RequireOne;
+        
+        /// <inheritdoc />
+        protected override string TypeName => "Monitor";
 
         /// <inheritdoc />
         protected override Composite ConstructComposite(BehaviourTree tree)
         {
             return new Monitor(tree, _successPolicy, _failurePolicy);
         }
+
     }
 }

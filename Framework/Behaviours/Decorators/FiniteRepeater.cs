@@ -1,7 +1,7 @@
-﻿namespace Chinchillada.BehaviourSelections.BehaviourTree
+﻿namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
-    /// A <see cref="Decorator"/> <see cref="Behaviour"/> that repeats its child behaviour a specified amount of times.
+    /// A <see cref="Decorator"/> <see cref="Behavior"/> that repeats its child behaviour a specified amount of times.
     /// </summary>
     public class FiniteRepeater : Decorator
     {
@@ -18,10 +18,10 @@
         /// <summary>
         /// Constructs a new Repeat decorator behaviour.
         /// </summary>
-        /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehaviour"/> belongs to.</param>
+        /// <param name="tree">The <see cref="BehaviourTree"/> this <see cref="IBehavior"/> belongs to.</param>
         /// <param name="child">The child behaviour we want to repeat.</param>
         /// <param name="count">The amount of times we want to repeat the <paramref name="child"/>.</param>
-        public FiniteRepeater(BehaviourTree tree, IBehaviour child, int count) : base(tree, child)
+        public FiniteRepeater(BehaviourTree tree, IBehavior child, int count) : base(tree, child)
         {
             _count = count;
         }
@@ -44,7 +44,7 @@
         /// </summary>
         /// <param name="child">The child.</param>
         /// <param name="status">The status that the <paramref name="child"/> terminated with.</param>
-        protected override void OnChildTerminated(IBehaviour child, Status status)
+        protected override void OnChildTerminated(IBehavior child, Status status)
         {
             //Increment.
             _currentCount++;

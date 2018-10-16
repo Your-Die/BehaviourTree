@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A behaviour that runs in a single action and immediately returns if it was succesful or not.
     /// </summary>
-    public class Action : Behaviour
+    public class Action : Behavior
     {
         /// <summary>
         /// The action to take.
@@ -26,8 +26,8 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// Runs the action once and returns the result as status.
         /// </summary>
         /// <returns>
-        /// <see cref="Behaviour.Status.Success"/> if the action was completed succesfully, 
-        /// <see cref="Behaviour.Status.Failure"/> if it failed.
+        /// <see cref="Behavior.Status.Success"/> if the action was completed succesfully, 
+        /// <see cref="Behavior.Status.Failure"/> if it failed.
         /// </returns>
         protected override Status UpdateInternal()
         {

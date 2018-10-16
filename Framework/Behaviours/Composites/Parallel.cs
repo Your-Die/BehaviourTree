@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree
+namespace Chinchillada.BehaviourSelections.BehaviorTree
 {
     /// <summary>
     /// A <see cref="Composite"/> behaviour that updates every non-terminated child behaviour every frame, 
@@ -23,17 +23,17 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// The child nodes that are currently active.
         /// </summary>
-        private LinkedList<IBehaviour> _activeChildren;
+        private LinkedList<IBehavior> _activeChildren;
 
         /// <summary>
         /// The successful children up until now.
         /// </summary>
-        private readonly HashSet<IBehaviour> _successfulChildren = new HashSet<IBehaviour>();
+        private readonly HashSet<IBehavior> _successfulChildren = new HashSet<IBehavior>();
 
         /// <summary>
         /// The failed children up until now.
         /// </summary>
-        private readonly HashSet<IBehaviour> _failedChildren = new HashSet<IBehaviour>();
+        private readonly HashSet<IBehavior> _failedChildren = new HashSet<IBehavior>();
 
         /// <summary>
         /// The possible policies.
@@ -73,14 +73,14 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
             base.Initialize();
 
             // Initialize the collections of children.
-            _activeChildren = new LinkedList<IBehaviour>(Children);
+            _activeChildren = new LinkedList<IBehavior>(Children);
             _successfulChildren.Clear();
             _failedChildren.Clear();
 
             //Start each child behaviour.
             for (int index = Children.Count - 1; index >= 0; index--)
             {
-                IBehaviour child = Children[index];
+                IBehavior child = Children[index];
                 child.Terminated += OnChildTerminated;
                 child.StartBehaviour();
             }
@@ -93,7 +93,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         public override void Terminate()
         {
             //Stop any remaining active behaviours.
-            foreach (IBehaviour child in _activeChildren)
+            foreach (IBehavior child in _activeChildren)
             {
                 child.Terminated -= OnChildTerminated;
                 Tree.StopBehaviour(child, CurrentStatus);
@@ -107,7 +107,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// </summary>
         /// <param name="child">The child that has terminated.</param>
         /// <param name="status">The status the <paramref name="child"/> termianted with.</param>
-        private void OnChildTerminated(IBehaviour child, Status status)
+        private void OnChildTerminated(IBehavior child, Status status)
         {
             //Remove from active list.
             child.Terminated -= OnChildTerminated;
@@ -138,7 +138,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree
         /// <summary>
         /// Validates if the <paramref name="policy"/> is satisfied by the <paramref name="policySet"/>.
         /// </summary>
-        private bool ValidatePolicy(Policy policy, ICollection<IBehaviour> policySet)
+        private bool ValidatePolicy(Policy policy, ICollection<IBehavior> policySet)
         {
             switch (policy)
             {

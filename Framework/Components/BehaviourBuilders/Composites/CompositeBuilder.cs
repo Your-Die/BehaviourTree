@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Chinchillada.BehaviourSelections.Utilities;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Builder
 {
     /// <summary>
     /// Abstract base class for <see cref="IBehaviourBuilder"/> that build <see cref="Composite"/> behaviours.
@@ -9,7 +9,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
     public abstract class CompositeBuilder : ParentBuilder
     {
         /// <inheritdoc />
-        public override IBehaviour Build(BehaviourTree tree)
+        public override IBehavior Build(BehaviourTree tree)
         {
             Composite composite = ConstructComposite(tree);
             InitializeChildren(composite, tree);
@@ -31,7 +31,7 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Builder
         protected virtual void InitializeChildren(Composite composite, BehaviourTree tree)
         {
             //Build and register the children.
-            IEnumerable<IBehaviour> children = BuildChildren(transform, tree);
+            IEnumerable<IBehavior> children = BuildChildren(transform, tree);
             children.ForEach(composite.AddChild);
         }
     }

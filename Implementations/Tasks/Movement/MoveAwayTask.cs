@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
+using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
     /// <summary>
     /// <see cref="MovementTask"/> that moves away from the target.
@@ -14,18 +14,18 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
         [SerializeField] private float _farEnoughDistance = 3;
 
         /// <inheritdoc />
-        protected override Status UpdateInternal()
+        protected override Behavior.Status UpdateInternal()
         { 
             //Check if we're far enough.
             float distance = Targeter.DistanceToTarget();
             if (distance > _farEnoughDistance)
-                return Status.Success;
+                return BehaviorTree.Behavior.Status.Success;
 
             //Move away.
             Vector2 directionToTarget = Targeter.DirectionToTarget();
             MovementController.ApplyMovement(-directionToTarget);
 
-            return Status.Running;
+            return BehaviorTree.Behavior.Status.Running;
         }
     }
 }

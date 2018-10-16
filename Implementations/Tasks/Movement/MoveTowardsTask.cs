@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Status = Chinchillada.BehaviourSelections.BehaviourTree.Behaviour.Status;
+using Status = Chinchillada.BehaviourSelections.BehaviorTree.Behavior.Status;
 
-namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
+namespace Chinchillada.BehaviourSelections.BehaviorTree.Tasks
 {
     /// <summary>
     /// Task that moves towards a given target.
@@ -9,27 +9,27 @@ namespace Chinchillada.BehaviourSelections.BehaviourTree.Tasks
     internal class MoveTowardsTask : MovementTask
     {
         /// <summary>
-        /// The distance that is close enough to coutn as a <see cref="Status.Success"/>.
+        /// The distance that is close enough to coutn as a <see cref="Behavior.Status.Success"/>.
         /// </summary>
         [SerializeField] private float _targetReachedDistance = 0.1f;
 
         /// <inheritdoc />
-        protected override Status UpdateInternal()
+        protected override Behavior.Status UpdateInternal()
         {
             //Lost target.
             if (!Targeter.HasTarget)
-                return Status.Failure;
+                return BehaviorTree.Behavior.Status.Failure;
              
             //Check if close enough. 
             float distance = Targeter.DistanceToTarget(); 
             if (distance < _targetReachedDistance)
-                return Status.Success;
+                return BehaviorTree.Behavior.Status.Success;
 
             //Move towards target. 
             Vector3 direction = Targeter.DirectionToTarget();
             MovementController.ApplyMovement(direction);
             
-            return Status.Running;
+            return BehaviorTree.Behavior.Status.Running;
         }
     }
 }
